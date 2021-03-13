@@ -12,20 +12,9 @@ const HomeTabBar = createBottomTabNavigator();
 const routes = [
   {
     name: 'home',
-<<<<<<< HEAD
-    component: <HomeTabBar.Screen name="home" component={Home} key="home" />,
-=======
     component: (
-      <HomeTabBar.Screen
-        name="home"
-        component={HomeScreen}
-        key="home"
-        options={{
-          tabBarIcon: () => <Ionicons name="md-home-outline" size={30} />,
-        }}
-      />
+      <HomeTabBar.Screen name="home" component={HomeScreen} key="home" />
     ),
->>>>>>> feature/home-screen
   },
 ];
 
