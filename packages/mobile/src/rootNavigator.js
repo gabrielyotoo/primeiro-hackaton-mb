@@ -36,7 +36,7 @@ const routes = [
 ];
 
 const ContentNavigator = () => (
-  <ContentStack.Navigator screenOptions={{ headerShown: false }}>
+  <ContentStack.Navigator>
     {routes.map((item) => item.component)}
   </ContentStack.Navigator>
 );
@@ -44,7 +44,7 @@ const ContentNavigator = () => (
 const RootNavigator = () => (
   <RootStack.Navigator
     initialRouteName=""
-    screenOptions={{ headerShown: false }}
+    screenOptions={{ header: () => <></> }}
   >
     <RootStack.Screen name="Content" component={ContentNavigator} />
   </RootStack.Navigator>

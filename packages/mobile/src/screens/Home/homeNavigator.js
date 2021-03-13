@@ -9,7 +9,7 @@ const HomeTabBar = createBottomTabNavigator();
 
 const Home = () => (
   <HomeTabBar.Navigator
-    screenOptions={{ headerShown: false }}
+    screenOptions={{ header: () => <></> }}
     tabBar={(props) => <TabBarComponent {...props} />}
   >
     <HomeTabBar.Screen name="home" component={HomeScreen} />
