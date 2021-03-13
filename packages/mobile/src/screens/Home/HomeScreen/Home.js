@@ -48,56 +48,63 @@ const mock = [
   },
 ];
 
+const HomeTop = () => (
+  <>
+    <S.WrapperMe>
+      <S.TextMe>Daleeeee,</S.TextMe>
+      <S.TextMe bold>Lucas Araujo!</S.TextMe>
+    </S.WrapperMe>
+    <S.TargetContainer>
+      <S.TargetText>Metas</S.TargetText>
+      <S.TargetsFlatList
+        data={[
+          {
+            title: 'dsafdsa',
+            goals: 5,
+            progress: 20,
+          },
+          {
+            title: 'aaaa',
+            goals: 5,
+            progress: 100,
+          },
+          {
+            title: '00333',
+            goals: 5,
+            progress: 80,
+          },
+        ]}
+        keyExtractor={({ title }) => title}
+        ListHeaderComponent={() => <S.Header />}
+        renderItem={({ item }) => (
+          <TargetComponent
+            title={item.title}
+            goals={item.goals}
+            progress={item.progress}
+          />
+        )}
+        ItemSeparatorComponent={() => <S.Separator />}
+        ListFooterComponent={() => <S.Footer />}
+      />
+    </S.TargetContainer>
+    <S.GoalText>Metas de Hoje</S.GoalText>
+  </>
+);
+
 const HomeScreen = () => (
   <>
     <S.Container>
-      <S.WrapperMe>
-        <S.TextMe>Daleeeee,</S.TextMe>
-        <S.TextMe bold>Lucas Araujo!</S.TextMe>
-      </S.WrapperMe>
-      <S.TargetContainer>
-        <S.TargetText>Metas</S.TargetText>
-        <S.TargetsFlatList
-          data={[
-            {
-              title: 'dsafdsa',
-              goals: 5,
-              progress: 20,
-            },
-            {
-              title: 'aaaa',
-              goals: 5,
-              progress: 100,
-            },
-            {
-              title: '00333',
-              goals: 5,
-              progress: 80,
-            },
-          ]}
-          keyExtractor={({ title }) => title}
-          ListHeaderComponent={() => <S.Header />}
-          renderItem={({ item }) => (
-            <TargetComponent
-              title={item.title}
-              goals={item.goals}
-              progress={item.progress}
-            />
-          )}
-          ItemSeparatorComponent={() => <S.Separator />}
-          ListFooterComponent={() => <S.Footer />}
-        />
-      </S.TargetContainer>
-      <S.WrapperTarget>
-        <S.GoalText>Metas de Hoje</S.GoalText>
-        <S.TargetGoFlatList
-          data={mock}
-          keyExtractor={(targetGo, index) => index.toString()}
-          renderItem={({ item }) => (
+      <S.TargetGoFlatList
+        data={mock}
+        keyExtractor={(targetGo, index) => index.toString()}
+        ListHeaderComponent={() => <HomeTop />}
+        renderItem={({ item }) => (
+          <S.WrapperTarget>
             <TargetGo title={item.title} checked={item.checked} />
-          )}
-        />
-      </S.WrapperTarget>
+          </S.WrapperTarget>
+        )}
+        ListFooterComponent={() => <S.VerticalFooter />}
+      />
     </S.Container>
   </>
 );

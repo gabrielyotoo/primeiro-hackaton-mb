@@ -5,14 +5,13 @@ import theme from '../../../theme/index.json';
 
 export const Container = styled.View`
   flex: 1;
-  /* padding-horizontal: ${`${Window.widthScale(0.1)}px`}; */
   background-color: ${theme.colors.secoundColor};
 `;
 
 export const WrapperMe = styled.View`
-  padding-top: ${`${Window.heightScale(0.1)}px`};
+  padding-top: ${`${Window.heightScale(0.05)}px`};
   justify-content: center;
-  padding-horizontal: ${`${Window.widthScale(0.1)}px`};
+  padding-horizontal: ${`${Window.widthScale(0.05)}px`};
 `;
 
 export const TextMe = styled.Text`
@@ -23,9 +22,8 @@ export const TextMe = styled.Text`
 `;
 
 export const WrapperTarget = styled.View`
-  padding-top: ${`${Window.heightScale(0.05)}px`};
+  padding-horizontal: ${`${Window.widthScale(0.05)}px`};
   flex-direction: column;
-  padding-horizontal: ${`${Window.widthScale(0.1)}px`};
 `;
 
 export const TargetContainer = styled.View`
@@ -34,7 +32,7 @@ export const TargetContainer = styled.View`
 `;
 
 export const TargetText = styled.Text`
-  margin-horizontal: ${`${Window.widthScale(0.1)}px`};
+  margin-horizontal: ${`${Window.widthScale(0.05)}px`};
   color: ${theme.colors.primaryText};
   font-family: ${theme.fonts.medium};
   font-size: ${`${Window.fontScale(26)}px`};
@@ -44,6 +42,8 @@ export const GoalText = styled.Text`
   color: ${theme.colors.primaryText};
   font-family: ${theme.fonts.medium};
   font-size: ${`${Window.fontScale(26)}px`};
+  padding-horizontal: ${`${Window.widthScale(0.05)}px`};
+  margin-top: ${Window.heightScale(0.05)}px;
 `;
 
 export const TargetsFlatList = styled.FlatList.attrs({
@@ -55,7 +55,7 @@ export const TargetsFlatList = styled.FlatList.attrs({
 })``;
 
 export const Header = styled.View`
-  margin-right: ${Window.widthScale(0.1)}px;
+  margin-right: ${Window.widthScale(0.05)}px;
 `;
 
 export const Separator = styled.View`
@@ -63,7 +63,7 @@ export const Separator = styled.View`
 `;
 
 export const Footer = styled.View`
-  margin-right: ${Window.widthScale(0.1)}px;
+  margin-right: ${Window.widthScale(0.05)}px;
 `;
 
 export const TargetGoFlatList = styled.FlatList.attrs({
@@ -72,4 +72,8 @@ export const TargetGoFlatList = styled.FlatList.attrs({
 })`
   padding-top: ${`${Window.heightScale(0.02)}px`};
   height: 100%;
+`;
+
+export const VerticalFooter = styled.View`
+  margin-bottom: ${Window.heightScale(0.05)}px;
 `;
