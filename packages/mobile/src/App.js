@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Provider as StoreProvider } from 'react-redux';
+import { Provider as PaperProvider } from 'react-native-paper';
 
 import AppContent from './AppContent';
 
@@ -11,7 +12,9 @@ export default class App extends Component {
   render() {
     return (
       // <StoreProvider>
-      <AppContent />
+      <PaperProvider>
+        <AppContent />
+      </PaperProvider>
       //* </StoreProvider> */}
     );
   }
