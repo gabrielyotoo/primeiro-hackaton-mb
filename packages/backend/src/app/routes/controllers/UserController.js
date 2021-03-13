@@ -18,6 +18,16 @@ routes.post('/create', async (req, res) => {
 
 routes.use(authMiddleware);
 
+routes.get('/me', async (req, res) => {
+  let response;
+  try {
+    response = await UserService.me(req.user.id);
+  } catch (err) {
+    return res.status(httpStatus.BAD_REQUEST).json(err);
+  }
+  return res.status(httpStatus.OK).json(response);
+})
+
 routes.put('/update', async (req, res) => res.status(httpStatus.OK).json({ msg: 'ok' }))
 
 export default routes;
