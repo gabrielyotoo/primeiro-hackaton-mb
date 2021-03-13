@@ -1,0 +1,21 @@
+{
+  "name": "hackaton",
+  "version": "0.1.0",
+  "repository": "git@github.com:gabrielyoto/primeiro-hackaton-mb.git",
+  "private": true,
+  "scripts": {
+    "native:android": "cd packages/mobile && yarn android",
+    "server": "cd packages/backend && npm start",
+    "lint": "eslint ./packages/mobile ./packages/backend",
+    "precommit": "yarn lint"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9"
+  },
+  "license": "MIT"
+}
