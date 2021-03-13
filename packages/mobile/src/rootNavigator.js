@@ -1,27 +1,44 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+import Header from './components/Header';
+import TargeDetail from './screens/TargetDetail';
 import Home from './screens/Home';
-import HomeScreen from './screens/Home/HomeScreen/Home';
-import TabBarComponent from './components/TabBar/TabBarComponent';
 
 const RootStack = createStackNavigator();
-const HomeTabBar = createBottomTabNavigator();
+const ContentStack = createStackNavigator();
 
 const routes = [
   {
     name: 'home',
     component: (
-      <HomeTabBar.Screen name="home" component={HomeScreen} key="home" />
+      <ContentStack.Screen
+        name="home"
+        component={Home}
+        key="home"
+        options={{ headerShown: false }}
+      />
+    ),
+  },
+  {
+    name: 'targetDetail',
+    component: (
+      <ContentStack.Screen
+        name="targetDetail"
+        key="targetDetail"
+        component={TargeDetail}
+        options={{
+          header: (props) => <Header {...props} title="meta" />,
+        }}
+      />
     ),
   },
 ];
 
 const ContentNavigator = () => (
-  <HomeTabBar.Navigator tabBar={(props) => <TabBarComponent {...props} />}>
+  <ContentStack.Navigator screenOptions={{ headerShown: false }}>
     {routes.map((item) => item.component)}
-  </HomeTabBar.Navigator>
+  </ContentStack.Navigator>
 );
 
 const RootNavigator = () => (

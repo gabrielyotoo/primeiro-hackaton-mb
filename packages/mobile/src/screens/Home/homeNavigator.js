@@ -1,25 +1,19 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Header from '../../components/Header';
-import TargeDetail from '../TargetDetail';
+import TabBarComponent from '../../components/TabBar';
 
 import HomeScreen from './HomeScreen/Home';
 
-const HomeNavigator = createStackNavigator();
+const HomeTabBar = createBottomTabNavigator();
 
 const Home = () => (
-  <HomeNavigator.Navigator initialRouteName="targetDetail">
-    <HomeNavigator.Screen name="home" component={TargeDetail} />
-    <HomeNavigator.Screen
-      name="targetDetail"
-      component={TargeDetail}
-      options={{
-        header: (props) => <Header {...props} title="meta" />,
-      }}
-    />
-    <HomeNavigator.Screen name="goalDetail" component={TargeDetail} />
-  </HomeNavigator.Navigator>
+  <HomeTabBar.Navigator
+    screenOptions={{ headerShown: false }}
+    tabBar={(props) => <TabBarComponent {...props} />}
+  >
+    <HomeTabBar.Screen name="home" component={HomeScreen} />
+  </HomeTabBar.Navigator>
 );
 
 export default Home;

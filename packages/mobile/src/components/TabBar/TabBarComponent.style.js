@@ -5,7 +5,7 @@ import * as Window from '../../utils/dimensions';
 import { colors } from '../../theme/index.json';
 
 export const TabBarContainer = styled.View`
-  height: ${Window.heightScale(0.08)}px;
+  min-height: ${Window.heightScale(0.08)}px;
   width: 100%;
   background-color: ${colors.primaryColor};
   flex-direction: row;
