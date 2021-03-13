@@ -3,16 +3,14 @@ import React from 'react';
 import { KeyboardAvoidingView, Platform, StatusBar } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
-import * as colors from '@hackaton-mobile/theme';
-
-import { styles } from './AppContent.style';
-import AppNavigator from './navigationStack';
+import * as colors from './theme';
+import AppNavigator from './rootNavigator';
 
 class AppContent extends React.Component {
   render() {
     return (
       <SafeAreaProvider>
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView>
           <StatusBar
             translucent
             backgroundColor={colors.primaryColor}

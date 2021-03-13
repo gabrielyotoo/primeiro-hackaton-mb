@@ -10,7 +10,7 @@ const HomeTabBar = createBottomTabNavigator();
 const routes = [
   {
     name: 'home',
-    component: <HomeTabBar.Screen name="home" component={Home} />,
+    component: <HomeTabBar.Screen name="home" component={Home} key="home" />,
   },
 ];
 

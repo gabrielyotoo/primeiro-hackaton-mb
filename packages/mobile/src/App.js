@@ -9,6 +9,10 @@ export default class App extends Component {
   }
 
   render() {
-    return <StoreProvider store={store}>{/* <AppContent /> */}</StoreProvider>;
+    return (
+      // <StoreProvider>
+      <AppContent />
+      //* </StoreProvider> */}
+    );
   }
 }
