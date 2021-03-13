@@ -15,7 +15,7 @@ const routes = [
     component: (
       <HomeTabBar.Screen
         name="home"
-        component={Home}
+        component={HomeScreen}
         key="home"
         options={{
           tabBarIcon: () => <Ionicons name="md-home-outline" size={30} />,
