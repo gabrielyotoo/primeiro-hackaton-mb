@@ -50,6 +50,8 @@ export const TargetsFlatList = styled.FlatList.attrs({
   showsHorizontalScrollIndicator: false,
   keyboardShouldPersistTaps: 'handled',
   horizontal: true,
+  bounces: false,
+  alwaysBounceHorizontal: false,
 })``;
 
 export const Header = styled.View`

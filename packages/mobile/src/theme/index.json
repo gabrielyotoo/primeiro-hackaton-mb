@@ -3,8 +3,9 @@
     "primaryColor": "#2d2d2d",
     "primaryColorLight": "#8d8d8d",
     "secoundColor": "#3D47AF",
+    "secondaryColorLight": "#4b7dfd",
     "primaryText": "#fafafa",
-    "secondaryText": "#8489c4"
+    "secondaryText": "#4b7dfd"
   },
   "fonts": {
     "regular": "Montserrat-Regular",

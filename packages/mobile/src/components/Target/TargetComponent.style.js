@@ -13,8 +13,9 @@ export const Container = styled.View`
 `;
 
 export const Title = styled.Text`
-  color: ${theme.colors.primaryText};
+  color: ${theme.colors.secondaryText};
   font-size: ${theme.fonts.sizes.title}px;
+  font-family: ${theme.fonts.medium};
 `;
 
 export const TextContainer = styled.View`
@@ -26,6 +27,7 @@ export const TextContainer = styled.View`
 export const Text = styled.Text`
   color: ${theme.colors.secondaryText};
   font-size: ${theme.fonts.sizes.text}px;
+  font-family: ${theme.fonts.medium};
 `;
 
 export const ProgressContainer = styled.View`
