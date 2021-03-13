@@ -2,6 +2,13 @@
   "colors": {
     "primaryColor": "#2d2d2d",
     "secoundColor": "#3D47AF",
-    "blue": "#4B7DFD"
+    "primaryText": "#fafafa"
+  },
+  "fonts": {
+    "sizes": {
+      "header": 16,
+      "title": 18,
+      "text": 12
+    }
   }
 }

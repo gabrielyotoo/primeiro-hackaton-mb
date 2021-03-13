@@ -1,12 +1,11 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 
-// import { Container } from './styles';
+import * as S from './HeaderComponent.style';
 
-const Header = ({ title }) => (
-  <View>
-    <Text>{title}</Text>
-  </View>
+const HeaderComponent = ({ title }) => (
+  <S.Container>
+    <S.Title>{title}</S.Title>
+  </S.Container>
 );
 
-export default Header;
+export default HeaderComponent;
