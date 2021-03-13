@@ -53,3 +53,7 @@ Para instalar um pacote você deve digitar `yarn workspace {workspace} add {paco
 
 - Lembrem-se de sempre rodar `git pull` antes de fazer alguma alteração
 - Lembrem-se de fazer PRs para feats que realmente precisem de revisão e marcar todos como reviewers
+
+### Padronização de commits
+
+`{fix | feat}({backend | mobile}): {message}`, exemplo: `fix(mobile): add login screen`
