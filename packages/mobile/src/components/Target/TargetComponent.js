@@ -2,6 +2,8 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+import ProgressBar from '../ProgressBar';
+
 import * as S from './TargetComponent.style';
 
 const TargetComponent = ({ title, goals, progress, id }) => {
@@ -18,9 +20,7 @@ const TargetComponent = ({ title, goals, progress, id }) => {
           <S.Text>{goals} Metas</S.Text>
           <S.Text>{progress}%</S.Text>
         </S.TextContainer>
-        <S.ProgressContainer>
-          <S.Progress progress={progress} />
-        </S.ProgressContainer>
+        <ProgressBar progress={progress} />
       </S.Container>
     </TouchableOpacity>
   );

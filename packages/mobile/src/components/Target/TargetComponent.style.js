@@ -29,17 +29,3 @@ export const Text = styled.Text`
   font-size: ${theme.fonts.sizes.text}px;
   font-family: ${theme.fonts.medium};
 `;
-
-export const ProgressContainer = styled.View`
-  margin-top: ${Window.heightScale(0.005)}px;
-  width: 100%;
-  background-color: ${theme.colors.primaryColorLight};
-  border-radius: 5px;
-`;
-
-export const Progress = styled.View`
-  padding: ${Window.heightScale(0.006)}px;
-  border-radius: 5px;
-  width: ${(props) => props.progress}%
-  background-color: ${theme.colors.secoundColor};
-`;

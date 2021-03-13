@@ -3,6 +3,7 @@ import { StatusBar } from 'react-native';
 
 import TargetGo from '../../components/TargetGo/TargetGo';
 import { colors } from '../../theme/index.json';
+import ProgressBar from '../../components/ProgressBar';
 
 import * as S from './TargetDetailScreen.style';
 
@@ -52,6 +53,7 @@ const mock = [
 const TargetTop = () => (
   <>
     <S.WrapperTarget>
+      <ProgressBar progress={50} fillColor={colors.primaryColor} />
       <S.Title>TESTEEE</S.Title>
       <S.Text>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet
