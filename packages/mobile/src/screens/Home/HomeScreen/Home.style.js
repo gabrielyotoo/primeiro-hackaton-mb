@@ -28,17 +28,41 @@ export const WrapperTarget = styled.View`
   padding-horizontal: ${`${Window.widthScale(0.1)}px`};
 `;
 
+export const TargetContainer = styled.View`
+  padding-top: ${`${Window.heightScale(0.05)}px`};
+  flex-direction: column;
+`;
+
 export const TargetText = styled.Text`
+  margin-horizontal: ${`${Window.widthScale(0.1)}px`};
+  color: ${theme.colors.primaryText};
+  font-family: ${theme.fonts.medium};
+  font-size: ${`${Window.fontScale(26)}px`};
+`;
+
+export const GoalText = styled.Text`
   color: ${theme.colors.primaryText};
   font-family: ${theme.fonts.medium};
   font-size: ${`${Window.fontScale(26)}px`};
 `;
 
 export const TargetsFlatList = styled.FlatList.attrs({
-  showsVerticalScrollIndicator: false,
+  showsHorizontalScrollIndicator: false,
   keyboardShouldPersistTaps: 'handled',
   horizontal: true,
 })``;
+
+export const Header = styled.View`
+  margin-right: ${Window.widthScale(0.1)}px;
+`;
+
+export const Separator = styled.View`
+  margin-right: ${Window.widthScale(0.05)}px;
+`;
+
+export const Footer = styled.View`
+  margin-right: ${Window.widthScale(0.1)}px;
+`;
 
 export const TargetGoFlatList = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,

@@ -1,8 +1,10 @@
 {
   "colors": {
     "primaryColor": "#2d2d2d",
+    "primaryColorLight": "#8d8d8d",
     "secoundColor": "#3D47AF",
-    "primaryText": "#fafafa"
+    "primaryText": "#fafafa",
+    "secondaryText": "#8489c4"
   },
   "fonts": {
     "regular": "Montserrat-Regular",

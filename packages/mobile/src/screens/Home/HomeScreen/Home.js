@@ -1,6 +1,7 @@
 import React from 'react';
 
 import TargetGo from '../../../components/TargetGo/TargetGo';
+import TargetComponent from '../../../components/Target';
 
 import * as S from './Home.style';
 
@@ -54,15 +55,44 @@ const HomeScreen = () => (
         <S.TextMe>Daleeeee,</S.TextMe>
         <S.TextMe bold>Lucas Araujo!</S.TextMe>
       </S.WrapperMe>
-      <S.WrapperTarget>
+      <S.TargetContainer>
         <S.TargetText>Metas</S.TargetText>
-        <S.TargetsFlatList />
-      </S.WrapperTarget>
+        <S.TargetsFlatList
+          data={[
+            {
+              title: 'dsafdsa',
+              goals: 5,
+              progress: 20,
+            },
+            {
+              title: 'aaaa',
+              goals: 5,
+              progress: 100,
+            },
+            {
+              title: '00333',
+              goals: 5,
+              progress: 80,
+            },
+          ]}
+          keyExtractor={({ title }) => title}
+          ListHeaderComponent={() => <S.Header />}
+          renderItem={({ item }) => (
+            <TargetComponent
+              title={item.title}
+              goals={item.goals}
+              progress={item.progress}
+            />
+          )}
+          ItemSeparatorComponent={() => <S.Separator />}
+          ListFooterComponent={() => <S.Footer />}
+        />
+      </S.TargetContainer>
       <S.WrapperTarget>
-        <S.TargetText>Metas de Hoje</S.TargetText>
+        <S.GoalText>Metas de Hoje</S.GoalText>
         <S.TargetGoFlatList
           data={mock}
-          keyExtractor={(targetGo) => toString(targetGo.id)}
+          keyExtractor={(targetGo, index) => index.toString()}
           renderItem={({ item }) => (
             <TargetGo title={item.title} checked={item.checked} />
           )}
