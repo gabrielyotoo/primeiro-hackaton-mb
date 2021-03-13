@@ -16,4 +16,7 @@ module.exports = {
     'plugin:security/recommended',
     'node',
   ],
+  rules: {
+    'import/no-commonjs': 'off',
+  },
 };

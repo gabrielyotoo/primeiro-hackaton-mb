@@ -1,4 +1,3 @@
-/* eslint-disable import/no-commonjs */
 import { Router } from 'express';
 
 const router = Router();
