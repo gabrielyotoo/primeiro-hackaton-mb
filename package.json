@@ -8,6 +8,7 @@
     "native:start": "cd packages/mobile && yarn start",
     "server": "cd packages/backend && npm start",
     "lint": "eslint ./packages/mobile ./packages/backend",
+    "lint:back": "eslint ./packages/backend",
     "precommit": "yarn lint"
   },
   "workspaces": {
