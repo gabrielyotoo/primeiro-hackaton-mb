@@ -14,8 +14,9 @@
     "bold": "Montserrat-Bold",
     "sizes": {
       "header": 16,
-      "title": 18,
-      "text": 12
+      "title": 26,
+      "h1": 22,
+      "text": 14
     }
   }
 }

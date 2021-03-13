@@ -14,7 +14,7 @@ export const Container = styled.View`
 
 export const Title = styled.Text`
   color: ${theme.colors.secondaryText};
-  font-size: ${theme.fonts.sizes.title}px;
+  font-size: ${theme.fonts.sizes.h1}px;
   font-family: ${theme.fonts.medium};
 `;
 
