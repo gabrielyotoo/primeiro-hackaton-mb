@@ -1,3 +1,4 @@
+/* eslint-disable import/no-commonjs */
 module.exports = {
   dialect: 'postgres',
   host: 'localhost',

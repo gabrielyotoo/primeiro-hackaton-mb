@@ -5,9 +5,8 @@ export default class UserService {
     let response = null;
 
     try {
-      response = await User.create({ name, email, password })
+      response = await User.create({ name, email, password });
     } catch (err) {
-      console.log(err);
       throw new Error(err);
     }
     return response.toJSON();

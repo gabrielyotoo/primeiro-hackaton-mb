@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import httpStatus from 'http-status';
-import UserModel from '../../models/User';
 import UserService from '../../services/user';
 
 const routes = new Router();

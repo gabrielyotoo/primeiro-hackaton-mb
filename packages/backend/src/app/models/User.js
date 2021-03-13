@@ -1,5 +1,4 @@
 import Sequelize, { Model } from 'sequelize';
-import uuid from 'uuid';
 
 class User extends Model {
   static init(sequelize) {

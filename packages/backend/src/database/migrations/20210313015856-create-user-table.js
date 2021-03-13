@@ -1,3 +1,4 @@
+/* eslint-disable import/no-commonjs */
 module.exports = {
   up: async (queryInterface, Sequelize) =>
     queryInterface.createTable('users', {
