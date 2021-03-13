@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Home from './screens/Home';
 import HomeScreen from './screens/Home/HomeScreen/Home';
@@ -12,13 +13,20 @@ const routes = [
   {
     name: 'home',
     component: (
-      <HomeTabBar.Screen name="home" component={HomeScreen} key="home" />
+      <HomeTabBar.Screen
+        name="home"
+        component={Home}
+        key="home"
+        options={{
+          tabBarIcon: () => <Ionicons name="md-home-outline" size={30} />,
+        }}
+      />
     ),
   },
 ];
 
 const ContentNavigator = () => (
-  <HomeTabBar.Navigator screenOptions={{ headerShown: false }}>
+  <HomeTabBar.Navigator>
     {routes.map((item) => item.component)}
   </HomeTabBar.Navigator>
 );
