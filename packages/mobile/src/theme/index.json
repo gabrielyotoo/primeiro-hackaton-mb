@@ -2,6 +2,13 @@
   "colors": {
     "primaryColor": "#2d2d2d",
     "secoundColor": "#3D47AF",
+    "black": "#2D2D2D",
     "blue": "#4B7DFD"
+  },
+  "fonts": {
+    "regular": "Montserrat-Regular",
+    "medium": "Montserrat-Medium",
+    "semiBold": "Montserrat-SemiBold",
+    "bold": "Montserrat-Bold"
   }
 }
