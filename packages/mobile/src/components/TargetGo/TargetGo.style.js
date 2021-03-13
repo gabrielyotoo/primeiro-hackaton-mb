@@ -6,7 +6,7 @@ import theme from '../../theme/index.json';
 
 export const Container = styled.View`
   padding: ${`${Window.widthScale(0.05)}px`};
-  background-color: ${theme.colors.black};
+  background-color: ${theme.colors.primaryColor};
   flex-direction: row;
   border-radius: ${`${Window.widthScale(0.06)}px`};
   margin-vertical: ${`${Window.heightScale(0.01)}px`};
@@ -24,7 +24,7 @@ export const CircleCheck = styled.View`
   width: ${`${Window.widthScale(0.08)}px`};
   height: ${`${Window.widthScale(0.08)}px`};
   border: ${`${Window.widthScale(0.005)}px`};
-  border-color: ${theme.colors.blue};
+  border-color: ${theme.colors.secoundColor};
   border-radius: ${`${Window.widthScale(0.06)}px`};
   justify-content: center;
   align-items: center;
@@ -39,6 +39,6 @@ export const TextTarget = styled.Text`
 
 export const Checked = styled(Icon).attrs({
   name: 'check',
-  color: theme.colors.blue,
+  color: theme.colors.secoundColor,
   size: 28,
 })``;
