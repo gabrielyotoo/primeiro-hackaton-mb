@@ -14,27 +14,19 @@ const TabBarComponent = () => {
     <>
       <S.TabBarContainer>
         <S.Button>
-          <Ionicons
-            name="md-home-outline"
-            color={colors.secoundColor}
-            size={30}
-          />
+          <Ionicons name="md-home" color={colors.secoundColor} size={30} />
         </S.Button>
         <S.Button>
           <MaterialCommunityIcons
             name="target"
             color={colors.secoundColor}
-            size={30}
+            size={35}
           />
         </S.Button>
         <S.BassoButtonContainer>
           <TouchableWithoutFeedback onPress={handleCreate}>
             <S.BassoButton>
-              <S.PlusIcon
-                name="md-add-outline"
-                color={colors.primaryColor}
-                size={35}
-              />
+              <S.PlusIcon name="md-add" color={colors.primaryColor} size={35} />
             </S.BassoButton>
           </TouchableWithoutFeedback>
         </S.BassoButtonContainer>
