@@ -33,7 +33,7 @@ export const CircleCheck = styled.View`
 export const TextTarget = styled.Text`
   font-family: ${theme.fonts.semiBold};
   font-size: ${`${Window.fontScale(15)}px`};
-  color: ${theme.colors.primaryColor};
+  color: ${theme.colors.primaryText};
   text-decoration: ${({ checked }) => (checked ? 'line-through' : 'none')};
 `;
 

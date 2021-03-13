@@ -19,7 +19,7 @@ export const TextMe = styled.Text`
   font-family: ${({ bold }) => (bold ? theme.fonts.bold : theme.fonts.regular)};
   font-size: ${({ bold }) =>
     bold ? `${Window.fontScale(24)}px` : `${Window.fontScale(20)}px`};
-  color: ${theme.colors.primaryColor};
+  color: ${theme.colors.primaryText};
 `;
 
 export const WrapperTarget = styled.View`
@@ -29,7 +29,7 @@ export const WrapperTarget = styled.View`
 `;
 
 export const TargetText = styled.Text`
-  color: ${theme.colors.primaryColor};
+  color: ${theme.colors.primaryText};
   font-family: ${theme.fonts.medium};
   font-size: ${`${Window.fontScale(26)}px`};
 `;
