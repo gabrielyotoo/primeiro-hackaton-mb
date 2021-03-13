@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import httpStatus from 'http-status';
-import UserService from '../../services/user';
+import UserService from '../../services/UserService';
 
 const routes = new Router();
 
