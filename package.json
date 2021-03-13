@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "native:android": "cd packages/mobile && yarn android",
+    "native:start": "cd packages/mobile && yarn start",
     "server": "cd packages/backend && npm start",
     "lint": "eslint ./packages/mobile ./packages/backend",
     "precommit": "yarn lint"
