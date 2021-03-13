@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Home from './screens/Home';
+import HomeScreen from './screens/Home/HomeScreen/Home';
 
 const RootStack = createStackNavigator();
 const HomeTabBar = createBottomTabNavigator();
@@ -10,7 +11,9 @@ const HomeTabBar = createBottomTabNavigator();
 const routes = [
   {
     name: 'home',
-    component: <HomeTabBar.Screen name="home" component={Home} key="home" />,
+    component: (
+      <HomeTabBar.Screen name="home" component={HomeScreen} key="home" />
+    ),
   },
 ];
 

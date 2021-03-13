@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { StatusBar } from 'react-native';
 
-import * as colors from './theme';
+import theme from './theme/index.json';
 import AppNavigator from './rootNavigator';
 
 class AppContent extends React.Component {
@@ -11,8 +11,8 @@ class AppContent extends React.Component {
       <>
         <StatusBar
           translucent
-          backgroundColor={colors.primaryColor}
-          barStyle="dark-content"
+          backgroundColor={theme.colors.secoundColor}
+          barStyle="light-content"
         />
         <NavigationContainer>
           <AppNavigator />

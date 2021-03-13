@@ -1,5 +1,7 @@
 {
   "colors": {
-    "primaryColor": "#FFF"
+    "primaryColor": "#FFF",
+    "secoundColor": "#3D47AF",
+    "blue": "#4B7DFD"
   }
 }

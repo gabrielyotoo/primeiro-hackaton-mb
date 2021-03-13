@@ -3,6 +3,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Header from '../../components/Header';
 
+import HomeScreen from './HomeScreen/Home';
+
 const HomeNavigator = createStackNavigator();
 
 const Home = () => (
@@ -10,7 +12,7 @@ const Home = () => (
     <HomeNavigator.Screen name="home" component={Home} />
     <HomeNavigator.Screen
       name="targetDetail"
-      component={Home}
+      component={HomeScreen}
       options={{
         header: (props) => <Header {...props} title="meta" />,
       }}
