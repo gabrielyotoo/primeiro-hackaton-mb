@@ -12,7 +12,7 @@ routes.post('/create', async (req, res) => {
   try {
     response = await TargetService.create(req.user.id, title, description, dueDate, goals);
   } catch (err) {
-    return res.status(httpStatus.BAD_REQUEST).json(err)
+    return res.status(httpStatus.BAD_REQUEST).json({ msg: err.message, stack: err.stack })
   }
   return res.status(httpStatus.OK).json(response);
 });
@@ -23,7 +23,7 @@ routes.get('/get_all', async (req, res) => {
   try {
     response = await TargetService.getAll(req.user.id);
   } catch (err) {
-    return res.status(httpStatus.BAD_REQUEST).json(err)
+    return res.status(httpStatus.BAD_REQUEST).json({ msg: err.message, stack: err.stack })
   }
   return res.status(httpStatus.OK).json(response);
 });
@@ -34,7 +34,7 @@ routes.get('/details', async (req, res) => {
   try {
     response = await TargetService.getById(id);
   } catch (err) {
-    return res.status(httpStatus.BAD_REQUEST).json(err)
+    return res.status(httpStatus.BAD_REQUEST).json({ msg: err.message, stack: err.stack })
   }
   return res.status(httpStatus.OK).json(response);
 });

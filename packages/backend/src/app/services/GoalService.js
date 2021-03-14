@@ -1,4 +1,4 @@
-import { DatabaseError, Op } from 'sequelize';
+import { Op } from 'sequelize';
 import moment from 'moment';
 import Goal from '../models/Goal';
 import Target from '../models/Target';
@@ -13,7 +13,7 @@ export default class GoalService {
     try {
       goalRequested = await Goal.findByPk(id)
     } catch (err) {
-      throw new DatabaseError('Can not found goal requested');
+      throw new Error('Can not found goal requested');
     }
 
     goalRequested.done = done;
@@ -21,7 +21,7 @@ export default class GoalService {
     try {
       response = await goalRequested.save();
     } catch (err) {
-      throw new DatabaseError('Can not update goal');
+      throw new Error('Can not update goal');
     }
 
     const getAllGoals = await Goal.findAll({
@@ -66,7 +66,7 @@ export default class GoalService {
         ]
       })
     } catch (err) {
-      throw new DatabaseError(err)
+      throw new Error('Can not find goal by user_Id')
     }
     return response;
   }
@@ -94,7 +94,7 @@ export default class GoalService {
         ]
       })
     } catch (err) {
-      throw new DatabaseError('Can not list goal by id')
+      throw new Error('Can not list goal by id')
     }
     return response.toJSON();
   }

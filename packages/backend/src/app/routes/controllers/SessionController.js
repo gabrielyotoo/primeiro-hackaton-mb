@@ -10,7 +10,7 @@ routes.post('/create', async (req, res) => {
   try {
     response = await SessionService.create(email, password);
   } catch (err) {
-    return res.status(httpStatus.BAD_REQUEST).json(err);
+    return res.status(httpStatus.BAD_REQUEST).json({ msg: err.message, stack: err.stack });
   }
   return res.status(httpStatus.OK).json(response);
 });

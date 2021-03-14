@@ -11,7 +11,7 @@ routes.post('/create', async (req, res) => {
   try {
     response = await UserService.create(name, email, password);
   } catch (err) {
-    return res.status(httpStatus.BAD_REQUEST).json(err)
+    return res.status(httpStatus.BAD_REQUEST).json({ msg: err.message, stack: err.stack })
   }
   return res.status(httpStatus.OK).json(response);
 });
@@ -23,7 +23,7 @@ routes.get('/me', async (req, res) => {
   try {
     response = await UserService.me(req.user.id);
   } catch (err) {
-    return res.status(httpStatus.BAD_REQUEST).json(err);
+    return res.status(httpStatus.BAD_REQUEST).json({ msg: err.message, stack: err.stack });
   }
   return res.status(httpStatus.OK).json(response);
 })

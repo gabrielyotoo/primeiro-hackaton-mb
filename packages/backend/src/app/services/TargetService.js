@@ -1,4 +1,3 @@
-import { DatabaseError } from 'sequelize';
 import moment from 'moment'
 import User from '../models/User';
 import Target from '../models/Target';
@@ -11,7 +10,7 @@ export default class TargetService {
     const userExists = await User.findByPk(userId);
 
     if (!userExists)
-      throw new DatabaseError('User not found');
+      throw new Error('User not found');
 
     try {
       response = await Target.create({
@@ -22,7 +21,7 @@ export default class TargetService {
         userId,
       })
     } catch (err) {
-      throw new DatabaseError(err);
+      throw new Error('Can not create target');
     }
 
     const Goals = await Promise.all(goals.map(async (goal) => Goal.create({
@@ -45,7 +44,7 @@ export default class TargetService {
         where: { userId },
       })
     } catch (err) {
-      throw new DatabaseError('Can not list all targets')
+      throw new Error('Can not list all targets')
     }
     return response;
   }
@@ -63,7 +62,7 @@ export default class TargetService {
         ]
       })
     } catch (err) {
-      throw new DatabaseError('Can not list target by id')
+      throw new Error('Can not list target by id')
     }
     return response.toJSON();
   }

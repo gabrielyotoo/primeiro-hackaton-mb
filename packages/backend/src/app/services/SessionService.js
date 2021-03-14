@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-import { DatabaseError } from 'sequelize';
 import User from '../models/User';
 import authConfig from '../../config/auth';
 
@@ -9,12 +8,12 @@ export default class SessionService {
     const userRequested = await User.findOne({ where: { email } });
 
     if (!userRequested) {
-      throw new DatabaseError('User not found');
+      throw new Error('User not found');
     }
 
     // eslint-disable-next-line security/detect-possible-timing-attacks
     if (!(await userRequested.checkPassword(password))) {
-      throw new DatabaseError('Passwords not match');
+      throw new Error('Passwords not match');
     }
     userRequested.toJSON();
 
