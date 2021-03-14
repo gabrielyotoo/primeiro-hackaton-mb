@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { RefreshControl, TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigation } from '@react-navigation/core';
+import { useNavigation } from '@react-navigation/native';
 
 import TargetGo from '../../../components/TargetGo/TargetGo';
 import TargetComponent from '../../../components/Target';

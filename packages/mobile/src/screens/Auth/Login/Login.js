@@ -11,8 +11,8 @@ import { authenticate } from '../../../redux/actions/authActions';
 import * as S from './Login.style';
 
 const Login = () => {
-  const [email, setEmail] = useState('cardoso.jvo@gmail.com');
-  const [password, setPassword] = useState('1234');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
