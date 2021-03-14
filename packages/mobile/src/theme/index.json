@@ -1,0 +1,22 @@
+{
+  "colors": {
+    "primaryColor": "#2d2d2d",
+    "primaryColorLight": "#8d8d8d",
+    "secoundColor": "#3D47AF",
+    "secondaryColorLight": "#4b7dfd",
+    "primaryText": "#fafafa",
+    "secondaryText": "#4b7dfd"
+  },
+  "fonts": {
+    "regular": "Montserrat-Regular",
+    "medium": "Montserrat-Medium",
+    "semiBold": "Montserrat-SemiBold",
+    "bold": "Montserrat-Bold",
+    "sizes": {
+      "header": 16,
+      "title": 26,
+      "h1": 22,
+      "text": 14
+    }
+  }
+}
