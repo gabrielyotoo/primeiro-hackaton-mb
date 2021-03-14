@@ -90,6 +90,14 @@ export const Empty = styled.Text`
   color: ${theme.colors.primaryColorLight};
 `;
 
+export const GoalEmpty = styled.Text`
+  margin-top: ${Window.heightScale(0.01)}px;
+  padding-horizontal: ${Window.widthScale(0.05)}px;
+  font-size: ${Window.fontScale(theme.fonts.sizes.header)}px;
+  font-family: ${theme.fonts.regular};
+  color: ${theme.colors.primaryColorLight};
+`;
+
 export const Separator = styled.View`
   margin-right: ${Window.widthScale(0.05)}px;
 `;

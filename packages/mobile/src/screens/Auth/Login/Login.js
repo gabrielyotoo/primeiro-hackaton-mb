@@ -21,7 +21,7 @@ const Login = () => {
     if (!isValidEmail) {
       return SnackBar.message('E-mail inválido');
     }
-    if (password.trim() === '' || password.length > 6) {
+    if (password.trim() === '') {
       return SnackBar.message('Senha inválida');
     }
 
@@ -30,7 +30,7 @@ const Login = () => {
         if (err) {
           SnackBar.message('Usuário/Senha inválidos');
         } else {
-          navigation.navigate('Content');
+          navigation.reset({ index: 0, routes: [{ name: 'Content' }] });
         }
       })
     );
