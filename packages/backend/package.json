@@ -3,16 +3,19 @@
   "version": "0.1.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node src/server.js"
+    "start": "nodemon --exec babel-node src/Server.js"
   },
   "dependencies": {
+    "@hackaton/eslint-config": "*",
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "http-status": "^1.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
     "pg": "^8.5.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.5.0",
-    "uuid": "^8.3.2",
-    "@hackaton/eslint-config": "*"
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",

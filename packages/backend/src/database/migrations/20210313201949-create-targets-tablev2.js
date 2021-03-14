@@ -1,25 +1,35 @@
 /* eslint-disable import/no-commonjs */
 module.exports = {
   up: async (queryInterface, Sequelize) =>
-    queryInterface.createTable('users', {
+    queryInterface.createTable('targets', {
       id: {
         type: Sequelize.UUID,
         allowNull: false,
         primaryKey: true,
         defaultValue: Sequelize.UUIDV4,
       },
-      name: {
+      title: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      email: {
+      description: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
       },
-      password_hash: {
-        type: Sequelize.STRING,
+      progress: {
+        type: Sequelize.FLOAT,
+        defaultValue: 0,
+      },
+      due_date: {
+        type: Sequelize.DATE,
+        defaultValue: new Date(),
+      },
+      user_id: {
+        type: Sequelize.UUID,
         allowNull: false,
+        references: { model: 'users', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       created_at: {
         type: Sequelize.DATE,
@@ -31,5 +41,5 @@ module.exports = {
       },
     }),
 
-  down: async (queryInterface) => queryInterface.dropTable('users'),
+  down: async (queryInterface) => queryInterface.dropTable('targets'),
 };

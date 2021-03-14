@@ -1,16 +1,16 @@
 import { Router } from 'express';
 import httpStatus from 'http-status';
-import UserService from '../../services/user';
+import SessionService from '../../services/SessionService';
 
 const routes = new Router();
 
 routes.post('/create', async (req, res) => {
   let response;
-  const { name, email, password } = req.body;
+  const { email, password } = req.body;
   try {
-    response = await UserService.create(name, email, password);
+    response = await SessionService.create(email, password);
   } catch (err) {
-    throw new Error('failed user create');
+    return res.status(httpStatus.BAD_REQUEST).json({ msg: err.message, stack: err.stack });
   }
   return res.status(httpStatus.OK).json(response);
 });
