@@ -8,9 +8,9 @@ routes.use(authMiddleware);
 
 routes.post('/create', async (req, res) => {
   let response;
-  const { comment, goalId } = req.body;
+  const { comment, goalId, link } = req.body;
   try {
-    response = await CommentService.create(comment, req.user.id, goalId);
+    response = await CommentService.create(comment, req.user.id, goalId, link);
   } catch (err) {
     return res.status(httpStatus.BAD_REQUEST).json({ msg: err.message, stack: err.stack })
   }
