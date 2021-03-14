@@ -54,7 +54,7 @@ export default class GoalService {
           dueDate: {
             [Op.between]: [
               moment(date).startOf('day').format(),
-              moment(date).endOf('day').subtract('1h').format(),
+              moment(date).endOf('day').format(),
             ],
           },
         },

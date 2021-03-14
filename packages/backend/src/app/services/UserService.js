@@ -1,4 +1,5 @@
-import { DatabaseError } from 'sequelize';
+import { DatabaseError, Op } from 'sequelize';
+import moment from 'moment';
 import Goal from '../models/Goal';
 import User from '../models/User';
 
@@ -23,6 +24,7 @@ export default class UserService {
 
   static async me(id) {
     let response = null;
+    const date = new Date()
 
     try {
       response = await User.findOne(
@@ -33,6 +35,13 @@ export default class UserService {
             {
               model: Goal,
               required: false,
+              where: {
+                dueDate: {
+                  [Op.lte]:
+                    moment(date).endOf('day').format()
+                  ,
+                },
+              },
             }
           ]
         }
