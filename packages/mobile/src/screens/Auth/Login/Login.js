@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import EmailValidator from 'email-validator';
 
-import * as SnackBar from '../../../utils/snackBar';
+import * as SnackBar from '../../../services/snackBar';
 import LeftImage from '../../../assets/svg/left_auth.svg';
 import TextInput from '../../../components/TextInput/TextInput';
 

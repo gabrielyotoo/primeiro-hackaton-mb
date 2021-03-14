@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import * as S from './Register.style';
 import EmailValidator from 'email-validator';
-import * as SnackBar from '../../../utils/snackBar';
+import * as SnackBar from '../../../services/snackBar';
 
 import LeftImage from '../../../assets/svg/left_auth.svg';
 import TextInput from '../../../components/TextInput/TextInput';
 
-const Register = ({
-  navigation
-}) => {
+const Register = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -28,7 +26,7 @@ const Register = ({
     if (password !== confirmPassword) {
       return SnackBar.message('Senhas diferentes! Verifique-as');
     }
-  }
+  };
 
   return (
     <>

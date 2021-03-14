@@ -8,7 +8,7 @@ import { colors } from '../../theme/index.json';
 import * as S from './TabBarComponent.style';
 
 const TabBarComponent = () => {
-  const handleCreate = () => { };
+  const handleCreate = () => {};
 
   return (
     <>
