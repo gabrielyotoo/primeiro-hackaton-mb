@@ -9,13 +9,6 @@ const AuthApi = {
 
     return data;
   },
-
-  me: async () => {
-    const instance = getInstance();
-    const { data } = await instance.get(`${BASE_URL}/me`);
-
-    return data;
-  },
 };
 
 export default AuthApi;

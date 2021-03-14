@@ -1,24 +1,39 @@
 import React, { useState } from 'react';
 import EmailValidator from 'email-validator';
+import { useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
 import * as SnackBar from '../../../services/snackBar';
 import LeftImage from '../../../assets/svg/left_auth.svg';
 import TextInput from '../../../components/TextInput/TextInput';
+import { authenticate } from '../../../redux/actions/authActions';
 
 import * as S from './Login.style';
 
-const Login = ({ navigation }) => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   const handlerSubmit = () => {
     const isValidEmail = EmailValidator.validate(email);
     if (!isValidEmail) {
       return SnackBar.message('E-mail inválido');
     }
-    if (password.trim() === '' || password.length < 6) {
-      return SnackBar.message('Senha inválido');
+    if (password.trim() === '' || password.length > 6) {
+      return SnackBar.message('Senha inválida');
     }
+
+    dispatch(
+      authenticate({ email, password }, (err) => {
+        if (err) {
+          SnackBar.message('Usuário/Senha inválidos');
+        } else {
+          navigation.navigate('Content');
+        }
+      })
+    );
   };
 
   return (

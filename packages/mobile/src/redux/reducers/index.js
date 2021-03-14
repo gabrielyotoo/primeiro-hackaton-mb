@@ -2,10 +2,12 @@ import { combineReducers } from 'redux';
 
 import session from './session';
 import targets from './targets';
+import goals from './goals';
 
 const appReducer = combineReducers({
   session,
   targets,
+  goals,
 });
 
 const rootReducer = (state, action) => {

@@ -16,7 +16,7 @@ export const initialState = {
   },
 };
 
-export const sessionReducer = (state = initialState, action) => {
+export const goalReducer = (state = initialState, action) => {
   const { payload } = action;
   switch (action.type) {
     case SET_GOALS:
@@ -55,4 +55,4 @@ export const sessionReducer = (state = initialState, action) => {
   }
 };
 
-export default sessionReducer;
+export default goalReducer;

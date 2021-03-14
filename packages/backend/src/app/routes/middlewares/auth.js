@@ -1,13 +1,15 @@
-import httpStatus from "http-status";
+import httpStatus from 'http-status';
 import { promisify } from 'util';
 import jwt from 'jsonwebtoken';
-import authConfig from '../../../config/auth'
+import authConfig from '../../../config/auth';
 
 export default async (req, res, next) => {
   const auth = req.headers.authorization;
 
   if (!auth)
-    return res.status(httpStatus.NETWORK_AUTHENTICATION_REQUIRED).json({ msg: 'JWT token not found' })
+    return res
+      .status(httpStatus.UNAUTHORIZED)
+      .json({ msg: 'JWT token not found' });
 
   const [, token] = auth.split(' ');
 
@@ -17,6 +19,6 @@ export default async (req, res, next) => {
     req.user.id = data.id;
     return next();
   } catch (err) {
-    return res.status(httpStatus.UNAUTHORIZED).json({ msg: 'Invalid Token' })
+    return res.status(httpStatus.UNAUTHORIZED).json({ msg: 'Invalid Token' });
   }
-}
+};

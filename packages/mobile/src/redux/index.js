@@ -6,5 +6,8 @@ import rootReducerObj from './reducers';
 const init = () => createStore(rootReducerObj, compose(applyMiddleware(thunk)));
 
 const store = init();
+store.subscribe(() => {
+  console.log(store.getState());
+});
 
 export default store;
