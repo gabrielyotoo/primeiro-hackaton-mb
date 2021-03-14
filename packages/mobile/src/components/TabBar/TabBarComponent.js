@@ -28,7 +28,11 @@ const TabBarComponent = ({ navigation }) => {
         <S.BassoButtonContainer>
           <TouchableWithoutFeedback onPress={handleCreate}>
             <S.BassoButton>
-              <S.PlusIcon name="md-add" color={colors.primaryColor} size={40} />
+              <S.PlusIcon
+                name="plussquare"
+                color={colors.primaryColor}
+                size={35}
+              />
             </S.BassoButton>
           </TouchableWithoutFeedback>
         </S.BassoButtonContainer>
