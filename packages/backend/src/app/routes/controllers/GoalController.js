@@ -6,7 +6,6 @@ import authMiddleware from '../middlewares/auth';
 const routes = new Router();
 routes.use(authMiddleware);
 
-
 routes.put('/update/:id', async (req, res) => {
   let response = null;
   const { id } = req.params;
@@ -15,23 +14,27 @@ routes.put('/update/:id', async (req, res) => {
   try {
     response = await GoalService.update(id, done);
   } catch (err) {
-    return res.status(httpStatus.BAD_REQUEST).json({ msg: err.message, stack: err.stack })
+    return res
+      .status(httpStatus.BAD_REQUEST)
+      .json({ msg: err.message, stack: err.stack });
   }
   return res.status(httpStatus.OK).json(response);
-})
+});
 
-routes.get('/details', async (req, res) => {
+routes.get('/details/:id', async (req, res) => {
   let response = null;
-  const { id } = req.body;
+  const { id } = req.params;
 
   try {
     response = await GoalService.getById(id);
   } catch (err) {
-    return res.status(httpStatus.BAD_REQUEST).json({ msg: err.message, stack: err.stack });
+    return res
+      .status(httpStatus.BAD_REQUEST)
+      .json({ msg: err.message, stack: err.stack });
   }
 
   return res.status(httpStatus.OK).json(response);
-})
+});
 
 routes.get('/get_today', async (req, res) => {
   let response = null;
@@ -41,10 +44,12 @@ routes.get('/get_today', async (req, res) => {
   try {
     response = await GoalService.getToday(id, date);
   } catch (err) {
-    return res.status(httpStatus.BAD_REQUEST).json({ msg: err.message, stack: err.stack });
+    return res
+      .status(httpStatus.BAD_REQUEST)
+      .json({ msg: err.message, stack: err.stack });
   }
 
   return res.status(httpStatus.OK).json(response);
-})
+});
 
 export default routes;
