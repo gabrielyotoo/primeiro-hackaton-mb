@@ -48,17 +48,18 @@ export const SubmitText = styled.Text`
   font-size: ${`${Window.fontScale(14)}px`};
   font-family: ${theme.fonts.bold};
   color: ${theme.colors.primaryText};
+  max-width: ${Window.widthScale(0.6)}px;
 `;
 
 export const CircleCheck = styled.TouchableOpacity.attrs({
-  activeOpacity: 0.75
+  activeOpacity: 0.75,
 })`
   width: ${`${Window.widthScale(0.18)}px`};
   height: ${`${Window.widthScale(0.18)}px`};
   border-radius: ${`${Window.widthScale(0.1)}px`};
   justify-content: center;
   align-items: center;
-  elevation: 15;
+  elevation: 10;
   background-color: ${theme.colors.secoundColor};
 `;
 

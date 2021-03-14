@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import EmailValidator from 'email-validator';
-import * as SnackBar from '../../../utils/snackBar';
+import * as SnackBar from '../../../services/snackBar';
 import LeftImage from '../../../assets/svg/left_auth.svg';
 import TextInput from '../../../components/TextInput/TextInput';
 import * as S from './Login.style';
@@ -17,7 +17,7 @@ const Login = ({ navigation }) => {
     if (password.trim() === '' || password.length < 6) {
       return SnackBar.message('Senha inválido');
     }
-  }
+  };
   return (
     <>
       <S.Container>
@@ -55,7 +55,7 @@ const Login = ({ navigation }) => {
         </S.RowSubmit>
       </S.Container>
     </>
-  )
+  );
 };
 
 export default Login;
