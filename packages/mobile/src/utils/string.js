@@ -7,14 +7,14 @@ export const formatToISODate = (value = '') => {
   return `${year}-${month}-${day}`;
 };
 
-export const formatNumbersToDate = (value = '') => {
-  if (value.trim() === '') return '';
-  const day = value.substr(0, 2);
-  const month = value.substr(2, 2);
-  const year = value.substr(4, 4);
-
-  return `${day}/${month}/${year}`;
-};
+export const formatNumbersToDate = (value = '') =>
+  value
+    ? value
+      .replace(/\D/g, '')
+      .replace(/(\d{2})(\d{1,2})/, '$1/$2')
+      .replace(/(\d{2})(\d{1,2})/, '$1/$2')
+      .replace(/(\/\d{4})\d+?$/, '$1')
+    : '';
 
 export const getDayOfWeek = (day) => {
   switch (day) {
