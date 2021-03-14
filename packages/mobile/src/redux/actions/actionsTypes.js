@@ -13,3 +13,5 @@ export const ADD_GOAL = 'ADD_GOAL';
 export const SET_GOALS = 'SET_GOALS';
 export const SET_GOAL_DETAILS = 'SET_GOAL_DETAILS';
 export const TOGGLE_GOAL = 'TOGGLE_GOAL';
+
+export const SET_WEEK_GOALS = 'SET_WEEK_GOALS';

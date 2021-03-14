@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabBarComponent from '../../components/TabBar';
 
 import HomeScreen from './HomeScreen/Home';
+import WeekScreen from './WeekScreen';
 
 const HomeTabBar = createBottomTabNavigator();
 
@@ -13,6 +14,7 @@ const Home = () => (
     tabBar={(props) => <TabBarComponent {...props} />}
   >
     <HomeTabBar.Screen name="home" component={HomeScreen} />
+    <HomeTabBar.Screen name="week" component={WeekScreen} />
   </HomeTabBar.Navigator>
 );
 

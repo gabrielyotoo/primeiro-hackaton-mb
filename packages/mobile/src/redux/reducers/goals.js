@@ -3,7 +3,6 @@ import {
   SET_GOAL_DETAILS,
   TOGGLE_GOAL,
   SET_GOALS,
-  ADD_COMMENT,
 } from '../actions/actionsTypes';
 
 export const initialState = {
