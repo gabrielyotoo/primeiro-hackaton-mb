@@ -83,7 +83,7 @@ export default class GoalService {
           },
           {
             model: Comment,
-            attributes: ['id', 'comment'],
+            attributes: ['id', 'comment', 'link', 'createdAt'],
             include: [
               {
                 model: User,
@@ -91,7 +91,8 @@ export default class GoalService {
               }
             ]
           }
-        ]
+        ],
+        order: [[Comment, 'createdAt', 'DESC']],
       })
     } catch (err) {
       throw new Error('Can not list goal by id')
