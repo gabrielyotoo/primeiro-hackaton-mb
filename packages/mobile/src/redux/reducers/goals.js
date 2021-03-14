@@ -8,7 +8,7 @@ import {
 
 export const initialState = {
   goals: [],
-  detail: {
+  details: {
     id: null,
     title: null,
     text: null,
@@ -54,15 +54,7 @@ export const goalReducer = (state = initialState, action) => {
     case SET_GOAL_DETAILS:
       return {
         ...state,
-        detail: payload,
-      };
-    case ADD_COMMENT:
-      return {
-        ...state,
-        detail: {
-          ...state.detail,
-          comments: [...state.detail.comments, payload],
-        },
+        details: { ...payload, comments: payload.Comments },
       };
     default:
       return state;

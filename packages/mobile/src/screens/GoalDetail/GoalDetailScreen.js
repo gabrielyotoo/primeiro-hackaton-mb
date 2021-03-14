@@ -21,93 +21,49 @@ const GoalTop = ({ title, description, id }) => (
   </>
 );
 
-const mockComments = [
-  {
-    id: 1,
-    comment: 'Usa o aaaaaaaaaa',
-    User: {
-      name: 'Lucas Araujo',
-    },
-  },
-  {
-    id: 2,
-    comment: 'Usa o aaaaaaaaaa',
-    User: {
-      name: 'Lucas Araujo',
-    },
-    link: 'https://google.com',
-  },
-  {
-    id: 3,
-    comment: 'Usa o aaaaaaaaaa',
-    User: {
-      name: 'Lucas Araujo',
-    },
-  },
-  {
-    id: 4,
-    comment: 'Usa o aaaaaaaaaa',
-    User: {
-      name: 'Lucas Araujo',
-    },
-  },
-  {
-    id: 5,
-    comment: 'Usa o aaaaaaaaaa',
-    User: {
-      name: 'Lucas Araujo',
-    },
-  },
-  {
-    id: 6,
-    comment: 'Usa o aaaaaaaaaa',
-    User: {
-      name: 'Lucas Araujo',
-    },
-  },
-];
-
 const GoalDetailScreen = () => {
   const { params } = useRoute();
   const { comments, progress, title, description } = useSelector(
-    (state) => state.goals
+    (state) => state.goals.details
   );
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(
-  //     getGoalDetails(params.id, (err) => {
-  //       if (err) {
-  //         SnackBar.message(err);
-  //       }
-  //     })
-  //   );
-  // });
+  useEffect(() => {
+    dispatch(
+      getGoalDetails(params.id, (err) => {
+        if (err) {
+          SnackBar.message(err);
+        }
+      })
+    );
+  }, [dispatch, params.id]);
 
   return (
     <S.Screen>
       <StatusBar backgroundColor={colors.primaryColor} />
-      <S.TargetGoFlatList
-        data={mockComments}
-        keyExtractor={({ id }) => id}
-        ListHeaderComponent={() => (
-          <GoalTop
-            title={title}
-            description={description}
-            progress={progress}
-            id={params.id}
-          />
-        )}
-        renderItem={({ item }) => (
-          <Comment
-            comment={item.comment}
-            id={item.id}
-            link={item.link ?? undefined}
-            user={item.User}
-          />
-        )}
-        ListFooterComponent={() => <S.Footer />}
-      />
+      {comments && comments.length > 0 && (
+        <S.TargetGoFlatList
+          data={comments}
+          keyExtractor={({ id }) => id}
+          ListHeaderComponent={() => (
+            <GoalTop
+              title={title}
+              description={description}
+              progress={progress}
+              id={params.id}
+            />
+          )}
+          renderItem={({ item }) => (
+            <Comment
+              comment={item.comment}
+              id={item.id}
+              link={item.link ?? undefined}
+              user={item.User}
+            />
+          )}
+          ListFooterComponent={() => <S.Footer />}
+        />
+      )}
     </S.Screen>
   );
 };

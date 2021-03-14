@@ -30,7 +30,7 @@ export const Text = styled.Text`
 `;
 
 export const Input = styled.TextInput.attrs((props) => ({
-  multiline: props.link,
+  multiline: !props.link,
   placeholderTextColor: colors.primaryText,
 }))`
   color: ${colors.primaryText};

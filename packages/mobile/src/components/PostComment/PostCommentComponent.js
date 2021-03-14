@@ -4,7 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import { useDispatch } from 'react-redux';
 
-import { postComment } from '../../redux/actions/goalActions';
+import { postComment, getGoalDetails } from '../../redux/actions/goalActions';
 import * as SnackBar from '../../services/snackBar';
 import { colors } from '../../theme/index.json';
 
@@ -29,6 +29,14 @@ const PostCommentComponent = ({ goalId }) => {
         (err) => {
           if (err) {
             SnackBar.message(err);
+          } else {
+            dispatch(
+              getGoalDetails(goalId, (err) => {
+                if (err) {
+                  SnackBar.message(err);
+                }
+              })
+            );
           }
         }
       )
