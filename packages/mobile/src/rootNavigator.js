@@ -6,8 +6,8 @@ import TargeDetail from './screens/TargetDetail';
 import Home from './screens/Home';
 
 // authstack
-import Login from './screens/Auth/Login/Login';
-import Register from './screens/Auth/Register/Register';
+import Login from './screens/Auth/Login';
+import Register from './screens/Auth/Register';
 
 const RootStack = createStackNavigator();
 const ContentStack = createStackNavigator();
@@ -82,8 +82,8 @@ const RootNavigator = () => (
     initialRouteName=""
     screenOptions={{ header: () => <></> }}
   >
-    <RootStack.Screen name="Auth" component={AuthNavigator} />
     <RootStack.Screen name="Content" component={ContentNavigator} />
+    <RootStack.Screen name="Auth" component={AuthNavigator} />
   </RootStack.Navigator>
 );
 

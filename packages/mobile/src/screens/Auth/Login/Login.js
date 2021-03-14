@@ -8,8 +8,6 @@ import * as S from './Login.style';
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  console.log(email);
-  console.log(password);
 
   const handlerSubmit = () => {
     const isValidEmail = EmailValidator.validate(email);
