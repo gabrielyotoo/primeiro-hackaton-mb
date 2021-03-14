@@ -36,10 +36,10 @@ routes.get('/details/:id', async (req, res) => {
   return res.status(httpStatus.OK).json(response);
 });
 
-routes.get('/get_today', async (req, res) => {
+routes.get('/get_today/:date', async (req, res) => {
   let response = null;
   const { id } = req.user;
-  const { date } = req.body;
+  const { date } = req.params;
 
   try {
     response = await GoalService.getToday(id, date);
