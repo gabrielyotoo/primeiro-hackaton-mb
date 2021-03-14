@@ -5,6 +5,7 @@ import authConfig from '../../config/auth';
 
 export default class SessionService {
   static async create(email, password) {
+    let response = null;
     const userRequested = await User.findOne({ where: { email } });
 
     if (!userRequested) {
@@ -12,14 +13,16 @@ export default class SessionService {
     }
 
     // eslint-disable-next-line security/detect-possible-timing-attacks
-    if (userRequested.password !== password) {
+    if (!(await userRequested.checkPassword(password))) {
       throw new DatabaseError('Passwords not match');
     }
+    userRequested.toJSON();
 
-    userRequested.dataValues.token = jwt.sign({ id: userRequested.id }, authConfig.secret, {
+    response = { id: userRequested.id, name: userRequested.name, email: userRequested.email }
+
+    response.token = jwt.sign({ id: userRequested.id }, authConfig.secret, {
       expiresIn: authConfig.expiresIn,
     })
-
-    return userRequested.toJSON();
+    return response;
   }
 }

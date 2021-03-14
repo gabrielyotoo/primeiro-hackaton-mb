@@ -5,7 +5,7 @@ class Target extends Model {
     super.init(
       {
         id: {
-          type: Sequelize.UUID,
+          type: Sequelize.UUIDV4,
           primaryKey: true,
           field: 'id',
           defaultValue: Sequelize.UUIDV4,
@@ -14,6 +14,7 @@ class Target extends Model {
         description: Sequelize.STRING,
         progress: Sequelize.FLOAT,
         dueDate: Sequelize.DATE,
+        userId: Sequelize.UUIDV4,
       },
       { sequelize }
     );
@@ -21,7 +22,7 @@ class Target extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' })
+    this.belongsTo(models.User)
     this.hasMany(models.Goal)
   }
 }

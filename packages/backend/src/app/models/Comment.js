@@ -1,6 +1,6 @@
 import Sequelize, { Model } from 'sequelize';
 
-class Goal extends Model {
+class Comment extends Model {
   static init(sequelize) {
     super.init(
       {
@@ -10,12 +10,9 @@ class Goal extends Model {
           field: 'id',
           defaultValue: Sequelize.UUIDV4,
         },
-        title: Sequelize.STRING,
-        description: Sequelize.STRING,
-        done: Sequelize.BOOLEAN,
-        dueDate: Sequelize.DATE(),
+        comment: Sequelize.STRING,
         userId: Sequelize.UUIDV4,
-        targetId: Sequelize.UUIDV4,
+        goalId: Sequelize.UUIDV4,
       },
       { sequelize }
     );
@@ -24,9 +21,8 @@ class Goal extends Model {
 
   static associate(models) {
     this.belongsTo(models.User);
-    this.belongsTo(models.Target);
-    this.hasMany(models.Comment)
+    this.belongsTo(models.Goal);
   }
 }
 
-export default Goal;
+export default Comment;

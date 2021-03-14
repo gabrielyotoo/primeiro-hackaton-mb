@@ -28,6 +28,5 @@ routes.get('/me', async (req, res) => {
   return res.status(httpStatus.OK).json(response);
 })
 
-routes.put('/update', async (req, res) => res.status(httpStatus.OK).json({ msg: 'ok' }))
 
 export default routes;

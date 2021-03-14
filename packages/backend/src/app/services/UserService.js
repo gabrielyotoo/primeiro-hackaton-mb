@@ -13,12 +13,12 @@ export default class UserService {
 
 
     try {
-      response = await User.create({ name, email, password });
+      const { id } = await User.create({ name, email, password });
+      response = { id, name, email }
     } catch (err) {
       throw new DatabaseError('Can not create a user');
     }
-
-    return response.toJSON();
+    return response;
   }
 
   static async me(id) {

@@ -1,25 +1,30 @@
 /* eslint-disable import/no-commonjs */
 module.exports = {
   up: async (queryInterface, Sequelize) =>
-    queryInterface.createTable('users', {
+    queryInterface.createTable('comments', {
       id: {
         type: Sequelize.UUID,
         allowNull: false,
         primaryKey: true,
         defaultValue: Sequelize.UUIDV4,
       },
-      name: {
+      comment: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      email: {
-        type: Sequelize.STRING,
+      user_id: {
+        type: Sequelize.UUID,
         allowNull: false,
-        unique: true,
+        references: { model: 'users', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
-      password_hash: {
-        type: Sequelize.STRING,
+      goal_id: {
+        type: Sequelize.UUID,
         allowNull: false,
+        references: { model: 'goals', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       created_at: {
         type: Sequelize.DATE,
@@ -31,5 +36,5 @@ module.exports = {
       },
     }),
 
-  down: async (queryInterface) => queryInterface.dropTable('users'),
+  down: async (queryInterface) => queryInterface.dropTable('comments'),
 };
