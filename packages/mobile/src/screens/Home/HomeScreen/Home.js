@@ -5,6 +5,7 @@ import TargetGo from '../../../components/TargetGo/TargetGo';
 import TargetComponent from '../../../components/Target';
 import { getTargets } from '../../../redux/actions/targetActions';
 import { getGoals, updateGoal } from '../../../redux/actions/goalActions';
+import * as SnackBar from '../../../services/snackBar';
 
 import * as S from './Home.style';
 
@@ -49,8 +50,16 @@ const HomeScreen = () => {
     dispatch(getGoals());
   }, [dispatch]);
 
-  const handlePress = (id) => {
-    dispatch(updateGoal(id));
+  const handlePress = (id, done) => {
+    dispatch(
+      updateGoal({ id, done }, (err) => {
+        if (err) {
+          SnackBar.message(err);
+        } else {
+          dispatch(getTargets());
+        }
+      })
+    );
   };
 
   return (
@@ -65,7 +74,7 @@ const HomeScreen = () => {
               <TargetGo
                 title={item.title}
                 checked={item.done}
-                onPress={() => handlePress(item.id)}
+                onPress={() => handlePress(item.id, !item.done)}
               />
             </S.WrapperTarget>
           )}

@@ -30,7 +30,9 @@ export const goalReducer = (state = initialState, action) => {
         goals: [...state.goals, ...payload],
       };
     case TOGGLE_GOAL: {
-      const goalToUpdate = state.goals.findIndex((goal) => goal.id === payload);
+      const goalToUpdate = state.goals.findIndex(
+        (goal) => goal.id === payload.id
+      );
       const newGoals = [...state.goals];
 
       if (goalToUpdate === -1) {
@@ -38,7 +40,7 @@ export const goalReducer = (state = initialState, action) => {
       } else {
         newGoals[parseInt(goalToUpdate, 10)] = {
           ...state.goals[parseInt(goalToUpdate, 10)],
-          done: !state.goals[parseInt(goalToUpdate, 10)].done,
+          done: payload.done,
         };
       }
 

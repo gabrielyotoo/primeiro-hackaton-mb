@@ -17,7 +17,7 @@ const GoalApi = {
     return data;
   },
 
-  update: async (id, done) => {
+  update: async ({ id, done }) => {
     const instance = getInstance();
     const { data } = await instance.put(`${BASE_URL}/update/${id}`, {
       done,
