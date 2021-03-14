@@ -1,5 +1,5 @@
-import React from 'react';
-import { TouchableWithoutFeedback } from 'react-native';
+import React, { useState } from 'react';
+import { TouchableWithoutFeedback, Modal } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -7,8 +7,10 @@ import { colors } from '../../theme/index.json';
 
 import * as S from './TabBarComponent.style';
 
-const TabBarComponent = () => {
-  const handleCreate = () => {};
+const TabBarComponent = ({ navigation }) => {
+  const handleCreate = () => {
+    navigation.navigate('createTarget');
+  };
 
   return (
     <>
