@@ -18,9 +18,9 @@ const TargetComponent = ({ title, goals, progress, id }) => {
         <S.Title>{title}</S.Title>
         <S.TextContainer>
           <S.Text>{goals} Metas</S.Text>
-          <S.Text>{progress}%</S.Text>
+          <S.Text>{(progress * 100).toFixed(2).replace('.', ',')}%</S.Text>
         </S.TextContainer>
-        <ProgressBar progress={progress} />
+        <ProgressBar progress={progress * 100} />
       </S.Container>
     </TouchableOpacity>
   );
