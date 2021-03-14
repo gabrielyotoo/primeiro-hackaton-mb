@@ -33,7 +33,9 @@ export const goalReducer = (state = initialState, action) => {
       const goalToUpdate = state.goals.findIndex((goal) => goal.id === payload);
       const newGoals = [...state.goals];
 
-      if (goalToUpdate !== -1) {
+      if (goalToUpdate === -1) {
+        return state;
+      } else {
         newGoals[parseInt(goalToUpdate, 10)] = {
           ...state.goals[parseInt(goalToUpdate, 10)],
           done: !state.goals[parseInt(goalToUpdate, 10)].done,

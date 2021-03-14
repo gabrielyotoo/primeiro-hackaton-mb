@@ -40,9 +40,9 @@ export const getGoalDetail = (callback = (err) => {}) => async (dispatch) => {
 export const updateGoal = (id, callback = (err) => {}) => async (dispatch) => {
   dispatch(increaseLoading());
   try {
-    const payload = await GoalApi.update(id);
+    await GoalApi.update(id);
     dispatch({
-      payload,
+      payload: id,
       type: TOGGLE_GOAL,
     });
 

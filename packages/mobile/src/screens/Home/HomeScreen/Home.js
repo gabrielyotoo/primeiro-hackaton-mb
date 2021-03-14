@@ -18,7 +18,7 @@ const HomeTop = ({ name, targets }) => (
       <S.TargetText>Metas</S.TargetText>
       <S.TargetsFlatList
         data={targets}
-        keyExtractor={({ title }) => title}
+        keyExtractor={({ id }) => id}
         ListHeaderComponent={() => <S.Header />}
         renderItem={({ item }) => (
           <TargetComponent
@@ -58,7 +58,7 @@ const HomeScreen = () => {
       <S.Container>
         <S.TargetGoFlatList
           data={goals}
-          keyExtractor={(targetGo) => targetGo.id}
+          keyExtractor={({ id }) => id}
           ListHeaderComponent={() => <HomeTop name={name} targets={targets} />}
           renderItem={({ item }) => (
             <S.WrapperTarget>
