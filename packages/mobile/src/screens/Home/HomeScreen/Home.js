@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import TargetGo from '../../../components/TargetGo/TargetGo';
 import TargetComponent from '../../../components/Target';
@@ -48,48 +49,52 @@ const mock = [
   },
 ];
 
-const HomeTop = () => (
-  <>
-    <S.WrapperMe>
-      <S.TextMe>Daleeeee,</S.TextMe>
-      <S.TextMe bold>Lucas Araujo!</S.TextMe>
-    </S.WrapperMe>
-    <S.TargetContainer>
-      <S.TargetText>Metas</S.TargetText>
-      <S.TargetsFlatList
-        data={[
-          {
-            title: 'dsafdsa',
-            goals: 5,
-            progress: 20,
-          },
-          {
-            title: 'aaaa',
-            goals: 5,
-            progress: 100,
-          },
-          {
-            title: '00333',
-            goals: 5,
-            progress: 80,
-          },
-        ]}
-        keyExtractor={({ title }) => title}
-        ListHeaderComponent={() => <S.Header />}
-        renderItem={({ item }) => (
-          <TargetComponent
-            title={item.title}
-            goals={item.goals}
-            progress={item.progress}
-          />
-        )}
-        ItemSeparatorComponent={() => <S.Separator />}
-        ListFooterComponent={() => <S.Footer />}
-      />
-    </S.TargetContainer>
-    <S.GoalText>Metas de Hoje</S.GoalText>
-  </>
-);
+const HomeTop = () => {
+  const { name } = useSelector((state) => state.session.loggedUser);
+
+  return (
+    <>
+      <S.WrapperMe>
+        <S.TextMe>Daleeeee,</S.TextMe>
+        <S.TextMe bold>{name ?? ''}</S.TextMe>
+      </S.WrapperMe>
+      <S.TargetContainer>
+        <S.TargetText>Metas</S.TargetText>
+        <S.TargetsFlatList
+          data={[
+            {
+              title: 'dsafdsa',
+              goals: 5,
+              progress: 20,
+            },
+            {
+              title: 'aaaa',
+              goals: 5,
+              progress: 100,
+            },
+            {
+              title: '00333',
+              goals: 5,
+              progress: 80,
+            },
+          ]}
+          keyExtractor={({ title }) => title}
+          ListHeaderComponent={() => <S.Header />}
+          renderItem={({ item }) => (
+            <TargetComponent
+              title={item.title}
+              goals={item.goals}
+              progress={item.progress}
+            />
+          )}
+          ItemSeparatorComponent={() => <S.Separator />}
+          ListFooterComponent={() => <S.Footer />}
+        />
+      </S.TargetContainer>
+      <S.GoalText>Metas de Hoje</S.GoalText>
+    </>
+  );
+};
 
 const HomeScreen = () => (
   <>
