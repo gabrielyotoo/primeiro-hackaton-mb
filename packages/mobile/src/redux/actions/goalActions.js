@@ -20,10 +20,12 @@ export const getGoals = (callback = (err) => {}) => async (dispatch) => {
   }
 };
 
-export const getGoalDetail = (callback = (err) => {}) => async (dispatch) => {
+export const getGoalDetails = (id, callback = (err) => {}) => async (
+  dispatch
+) => {
   dispatch(increaseLoading());
   try {
-    const payload = await GoalApi.getToday();
+    const payload = await GoalApi.getById(id);
     dispatch({
       payload,
       type: SET_GOALS,

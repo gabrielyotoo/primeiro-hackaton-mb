@@ -3,34 +3,32 @@ import { StatusBar } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRoute } from '@react-navigation/native';
 
-import TargetGo from '../../components/TargetGo/TargetGo';
 import { colors } from '../../theme/index.json';
-import ProgressBar from '../../components/ProgressBar';
-import { getTargetDetails } from '../../redux/actions/targetActions';
 import * as SnackBar from '../../services/snackBar';
+import Comment from '../../components/Comment/CommentComponent';
+import { getGoalDetails } from '../../redux/actions/goalActions';
 
-import * as S from './TargetDetailScreen.style';
+import * as S from './GoalDetailScreen.style';
 
-const TargetTop = ({ title, description, progress }) => (
+const GoalTop = ({ title, description }) => (
   <>
     <S.WrapperTarget>
-      <ProgressBar progress={progress ?? 0} fillColor={colors.primaryColor} />
       <S.Title>{title ?? ''}</S.Title>
       <S.Text>{description ?? ''}</S.Text>
     </S.WrapperTarget>
   </>
 );
 
-const TargetDetailScreen = () => {
+const GoalDetailScreen = () => {
   const { params } = useRoute();
-  const { goals, progress, title, description } = useSelector(
-    (state) => state.targets
+  const { comments, progress, title, description } = useSelector(
+    (state) => state.goals
   );
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(
-      getTargetDetails(params.id, (err) => {
+      getGoalDetails(params.id, (err) => {
         if (err) {
           SnackBar.message(err);
         }
@@ -42,17 +40,22 @@ const TargetDetailScreen = () => {
     <S.Screen>
       <StatusBar backgroundColor={colors.primaryColor} />
       <S.TargetGoFlatList
-        data={goals}
+        data={comments}
         keyExtractor={({ id }) => id}
         ListHeaderComponent={() => (
-          <TargetTop
+          <GoalTop
             title={title}
             description={description}
             progress={progress}
           />
         )}
         renderItem={({ item }) => (
-          <TargetGo title={item.title} checked={item.checked} />
+          <Comment
+            comment={item.comment}
+            id={item.id}
+            link={item.link ?? undefined}
+            user={item.User}
+          />
         )}
         ListFooterComponent={() => <S.Footer />}
       />
@@ -60,4 +63,4 @@ const TargetDetailScreen = () => {
   );
 };
 
-export default TargetDetailScreen;
+export default GoalDetailScreen;

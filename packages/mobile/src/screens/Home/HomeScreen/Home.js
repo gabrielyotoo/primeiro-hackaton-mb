@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { RefreshControl } from 'react-native';
+import { RefreshControl, TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/core';
 
 import TargetGo from '../../../components/TargetGo/TargetGo';
 import TargetComponent from '../../../components/Target';
@@ -48,6 +49,7 @@ const HomeScreen = () => {
   const { name } = useSelector((state) => state.session.loggedUser);
   const { targets } = useSelector((state) => state.targets);
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   useEffect(() => {
     dispatch(getTargets());
@@ -87,6 +89,10 @@ const HomeScreen = () => {
     );
   };
 
+  const openGoalDetail = (id) => {
+    navigation.navigate('goalDetail', { id });
+  };
+
   return (
     <>
       <S.Container>
@@ -103,11 +109,13 @@ const HomeScreen = () => {
           ListHeaderComponent={() => <HomeTop name={name} targets={targets} />}
           renderItem={({ item }) => (
             <S.WrapperTarget>
-              <TargetGo
-                title={item.title}
-                checked={item.done}
-                onPress={() => handlePress(item.id, !item.done)}
-              />
+              <TouchableOpacity onPress={() => openGoalDetail(item.id)}>
+                <TargetGo
+                  title={item.title}
+                  checked={item.done}
+                  onPress={() => handlePress(item.id, !item.done)}
+                />
+              </TouchableOpacity>
             </S.WrapperTarget>
           )}
           ListEmptyComponent={() => (
