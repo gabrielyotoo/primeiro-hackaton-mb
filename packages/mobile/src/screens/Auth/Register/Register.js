@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
-import * as S from './Register.style';
 import EmailValidator from 'email-validator';
-import * as SnackBar from '../../../services/snackBar';
+import { useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
+import * as SnackBar from '../../../services/snackBar';
 import LeftImage from '../../../assets/svg/left_auth.svg';
 import TextInput from '../../../components/TextInput/TextInput';
+import { register } from '../../../redux/actions/authActions';
 
-const Register = ({ navigation }) => {
+import * as S from './Register.style';
+
+const Register = () => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   const handlerSubmit = () => {
     const isValidEmail = EmailValidator.validate(email);
@@ -26,6 +32,16 @@ const Register = ({ navigation }) => {
     if (password !== confirmPassword) {
       return SnackBar.message('Senhas diferentes! Verifique-as');
     }
+
+    dispatch(
+      register({ name, email, password }, (err) => {
+        if (err) {
+          SnackBar.message(err);
+        } else {
+          navigation.navigate('Content');
+        }
+      })
+    );
   };
 
   return (
