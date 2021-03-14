@@ -1,7 +1,7 @@
 import GoalApi from '../../repositories/goals';
 
 import { decreaseLoading, increaseLoading } from './loadingAction';
-import { SET_GOALS, TOGGLE_GOAL } from './actionsTypes';
+import { SET_GOALS, SET_GOAL_DETAILS, TOGGLE_GOAL } from './actionsTypes';
 
 export const getGoals = (callback = (err) => {}) => async (dispatch) => {
   dispatch(increaseLoading());
@@ -20,13 +20,15 @@ export const getGoals = (callback = (err) => {}) => async (dispatch) => {
   }
 };
 
-export const getGoalDetail = (callback = (err) => {}) => async (dispatch) => {
+export const getGoalDetails = (id, callback = (err) => {}) => async (
+  dispatch
+) => {
   dispatch(increaseLoading());
   try {
-    const payload = await GoalApi.getToday();
+    const payload = await GoalApi.getById(id);
     dispatch({
       payload,
-      type: SET_GOALS,
+      type: SET_GOAL_DETAILS,
     });
 
     callback(null);
@@ -37,14 +39,31 @@ export const getGoalDetail = (callback = (err) => {}) => async (dispatch) => {
   }
 };
 
-export const updateGoal = (id, callback = (err) => {}) => async (dispatch) => {
+export const updateGoal = (goal, callback = (err) => {}) => async (
+  dispatch
+) => {
   dispatch(increaseLoading());
   try {
-    const payload = await GoalApi.update(id);
+    await GoalApi.update(goal);
     dispatch({
-      payload,
+      payload: goal,
       type: TOGGLE_GOAL,
     });
+
+    callback(null);
+  } catch (err) {
+    callback(err);
+  } finally {
+    dispatch(decreaseLoading());
+  }
+};
+
+export const postComment = (comment, callback = (err) => {}) => async (
+  dispatch
+) => {
+  dispatch(increaseLoading());
+  try {
+    await GoalApi.comment(comment);
 
     callback(null);
   } catch (err) {

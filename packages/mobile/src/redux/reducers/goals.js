@@ -3,16 +3,18 @@ import {
   SET_GOAL_DETAILS,
   TOGGLE_GOAL,
   SET_GOALS,
+  ADD_COMMENT,
 } from '../actions/actionsTypes';
 
 export const initialState = {
   goals: [],
-  detail: {
+  details: {
     id: null,
     title: null,
     text: null,
     done: false,
     dueDate: null,
+    comments: [],
   },
 };
 
@@ -30,13 +32,17 @@ export const goalReducer = (state = initialState, action) => {
         goals: [...state.goals, ...payload],
       };
     case TOGGLE_GOAL: {
-      const goalToUpdate = state.goals.findIndex((goal) => goal.id === payload);
+      const goalToUpdate = state.goals.findIndex(
+        (goal) => goal.id === payload.id
+      );
       const newGoals = [...state.goals];
 
-      if (goalToUpdate !== -1) {
+      if (goalToUpdate === -1) {
+        return state;
+      } else {
         newGoals[parseInt(goalToUpdate, 10)] = {
           ...state.goals[parseInt(goalToUpdate, 10)],
-          done: !state.goals[parseInt(goalToUpdate, 10)].done,
+          done: payload.done,
         };
       }
 
@@ -48,7 +54,7 @@ export const goalReducer = (state = initialState, action) => {
     case SET_GOAL_DETAILS:
       return {
         ...state,
-        detail: payload,
+        details: { ...payload, comments: payload.Comments },
       };
     default:
       return state;

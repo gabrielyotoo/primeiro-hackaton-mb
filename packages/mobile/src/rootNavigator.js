@@ -5,7 +5,7 @@ import Header from './components/Header';
 import TargeDetail from './screens/TargetDetail';
 import Home from './screens/Home';
 import CreateTarget from './screens/CreateTarget';
-
+import GoalDetail from './screens/GoalDetail';
 // authstack
 import Login from './screens/Auth/Login';
 import Register from './screens/Auth/Register';
@@ -35,6 +35,19 @@ const routes = [
         component={TargeDetail}
         options={{
           header: (props) => <Header {...props} title="meta" />,
+        }}
+      />
+    ),
+  },
+  {
+    name: 'goalDetail',
+    component: (
+      <ContentStack.Screen
+        name="goalDetail"
+        key="goalDetail"
+        component={GoalDetail}
+        options={{
+          header: (props) => <Header {...props} title="atividade" />,
         }}
       />
     ),
@@ -96,8 +109,8 @@ const RootNavigator = () => (
     initialRouteName=""
     screenOptions={{ header: () => <></> }}
   >
-    <RootStack.Screen name="Content" component={ContentNavigator} />
     <RootStack.Screen name="Auth" component={AuthNavigator} />
+    <RootStack.Screen name="Content" component={ContentNavigator} />
   </RootStack.Navigator>
 );
 

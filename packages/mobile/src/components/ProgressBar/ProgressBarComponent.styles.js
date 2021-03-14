@@ -11,7 +11,7 @@ export const ProgressContainer = styled.View`
 `;
 
 export const Progress = styled.View`
-  padding: ${Window.heightScale(0.006)}px;
+  padding-vertical: ${Window.heightScale(0.006)}px;
   border-radius: 5px;
   width: ${(props) => props.progress}%
   background-color: ${({ fillColor }) =>

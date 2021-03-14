@@ -25,7 +25,7 @@ export const WrapperButton = styled.TouchableOpacity.attrs({
   border-radius: ${`${Window.widthScale(0.08)}px`};
   width: ${`${Window.widthScale(0.8)}px`};
   elevation: 15;
-  margin-top: ${`${Window.heightScale(0.05)}px`};
+  margin-vertical: ${`${Window.heightScale(0.05)}px`};
 `;
 
 export const TitleButton = styled.Text`

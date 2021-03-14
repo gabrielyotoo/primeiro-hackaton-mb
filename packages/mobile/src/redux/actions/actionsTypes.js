@@ -7,6 +7,7 @@ export const AUTH_ME = 'AUTH_ME';
 
 export const ADD_TARGET = 'ADD_TARGET';
 export const SET_TARGETS = 'SET_TARGETS';
+export const SET_TARGET_DETAILS = 'SET_TARGET_DETAILS';
 
 export const ADD_GOAL = 'ADD_GOAL';
 export const SET_GOALS = 'SET_GOALS';

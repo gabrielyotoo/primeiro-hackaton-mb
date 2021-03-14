@@ -10,18 +10,25 @@ const GoalApi = {
     return data;
   },
 
-  getDetail: async (id) => {
+  getById: async (id) => {
     const instance = getInstance();
-    const { data } = await instance.get(`${BASE_URL}/details`);
+    const { data } = await instance.get(`${BASE_URL}/details/${id}`);
 
     return data;
   },
 
-  update: async (id) => {
+  update: async ({ id, done }) => {
     const instance = getInstance();
     const { data } = await instance.put(`${BASE_URL}/update/${id}`, {
-      done: true,
+      done,
     });
+
+    return data;
+  },
+
+  comment: async (comment) => {
+    const instance = getInstance();
+    const { data } = await instance.post('/comment/create', comment);
 
     return data;
   },
