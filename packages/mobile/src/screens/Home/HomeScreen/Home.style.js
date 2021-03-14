@@ -11,10 +11,8 @@ export const Container = styled.View`
 
 export const WrapperMe = styled.View`
   padding-top: ${`${Window.heightScale(0.05)}px`};
-  justify-content: space-between;
   margin-horizontal: ${`${Window.widthScale(0.05)}px`};
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
 `;
 
 export const NotificationIcon = styled(Icon).attrs({

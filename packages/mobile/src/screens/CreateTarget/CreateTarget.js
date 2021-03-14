@@ -1,22 +1,35 @@
 import React, { useState } from 'react';
-import moment from 'moment-timezone';
+import { StatusBar } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
 import TextInput from '../../components/TextInput/TextInput';
 import * as SnackBar from '../../services/snackBar';
 import TargetGo from '../../components/TargetGo/TargetGo';
+import { colors } from '../../theme/index.json';
+import {
+  formatNumbersToDate,
+  formatToISODate,
+  onlyDigits,
+} from '../../utils/string';
+import { addTarget } from '../../redux/actions/targetActions';
 
 import * as S from './CreateTarget.style';
 
 const CreateTarget = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [dueDate, setDueDate] = useState('');
   const [changeToGoals, setChangeToGoals] = useState(false);
   const [titleGoals, setTitleGoals] = useState('');
   const [descriptionGoals, setDescriptionGoals] = useState('');
+  const [dueDateGoals, setDueDateGoals] = useState('');
   const [goals, setGoals] = useState([]);
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   const createTarget = () => {
-    if (title.trim() === '' || description.trim() === '') {
+    if (title.trim() === '' || description.trim() === '' || dueDate === '') {
       return SnackBar.message('Insira os campos corretamente');
     }
     setChangeToGoals(!changeToGoals);
@@ -26,16 +39,38 @@ const CreateTarget = () => {
     const newGoal = {
       title: titleGoals,
       description: descriptionGoals,
-      dueDate: moment().format('YYYY-MM-DD'),
+      dueDate: formatToISODate(dueDate),
     };
 
     setGoals((_goals) => _goals.concat(newGoal));
     setDescriptionGoals('');
     setTitleGoals('');
+    setDueDateGoals('');
+  };
+
+  const handleAddTarget = () => {
+    dispatch(
+      addTarget(
+        {
+          title,
+          description,
+          dueDate: formatToISODate(dueDate),
+          goals,
+        },
+        (err) => {
+          if (err) {
+            SnackBar.message(err ?? '');
+          } else {
+            navigation.reset({ index: 0, routes: [{ name: 'home' }] });
+          }
+        }
+      )
+    );
   };
 
   return (
     <S.Container>
+      <StatusBar backgroundColor={colors.primaryColor} />
       {!changeToGoals ? (
         <>
           <S.WrapperFields>
@@ -43,13 +78,21 @@ const CreateTarget = () => {
               label="Título"
               value={title}
               onChangeText={setTitle}
-              width={0.75}
+              width={0.8}
             />
             <TextInput
               label="Descrição"
               value={description}
               onChangeText={setDescription}
-              width={0.75}
+              width={0.8}
+            />
+            <TextInput
+              label="Até quando?"
+              value={dueDate}
+              onChangeText={(text) =>
+                setDueDate(formatNumbersToDate(onlyDigits(text)))
+              }
+              width={0.8}
             />
           </S.WrapperFields>
           <S.WrapperButton onPress={createTarget}>
@@ -64,13 +107,21 @@ const CreateTarget = () => {
               label="Título"
               value={titleGoals}
               onChangeText={setTitleGoals}
-              width={0.75}
+              width={0.8}
             />
             <TextInput
               label="Descrição"
               value={descriptionGoals}
               onChangeText={setDescriptionGoals}
-              width={0.75}
+              width={0.8}
+            />
+            <TextInput
+              label="Até quando?"
+              value={dueDateGoals}
+              onChangeText={(text) =>
+                setDueDateGoals(formatNumbersToDate(onlyDigits(text)))
+              }
+              width={0.8}
             />
           </S.WrapperFields>
           <S.WrapperButton onPress={addToGoals}>
@@ -86,8 +137,16 @@ const CreateTarget = () => {
                 </S.WrapperGoals>
               </>
             )}
-            ListHeaderComponent={() => <S.GoalsTopComponent />}
-            ListFooterComponent={() => <S.GoalsBottomComponent />}
+            ListHeaderComponent={() => <></>}
+            ListFooterComponent={() =>
+              goals.length > 0 && (
+                <>
+                  <S.WrapperButton onPress={handleAddTarget}>
+                    <S.TitleButton>Finalizar</S.TitleButton>
+                  </S.WrapperButton>
+                </>
+              )
+            }
           />
         </>
       )}

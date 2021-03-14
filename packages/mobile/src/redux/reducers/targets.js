@@ -15,7 +15,7 @@ export const sessionReducer = (state = initialState, action) => {
     case ADD_TARGET:
       return {
         ...state,
-        targets: [...state.targets, ...payload],
+        targets: [...state.targets, payload],
       };
     default:
       return state;

@@ -9,6 +9,13 @@ const TargetApi = {
 
     return data;
   },
+
+  create: async (target) => {
+    const instance = getInstance();
+    const { data } = await instance.post(`${BASE_URL}/create`, target);
+
+    return data;
+  },
 };
 
 export default TargetApi;
