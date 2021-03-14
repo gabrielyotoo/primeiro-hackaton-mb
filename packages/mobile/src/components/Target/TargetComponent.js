@@ -13,7 +13,7 @@ const TargetComponent = ({ title, goals, progress, id }) => {
   };
 
   return (
-    <TouchableOpacity onPress={openTargetDetail}>
+    <TouchableOpacity activeOpacity={0.7} onPress={openTargetDetail}>
       <S.Container>
         <S.Title>{title}</S.Title>
         <S.TextContainer>

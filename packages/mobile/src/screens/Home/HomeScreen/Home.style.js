@@ -2,6 +2,8 @@ import styled from 'styled-components/native';
 
 import * as Window from '../../../utils/dimensions';
 import theme from '../../../theme/index.json';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 
 export const Container = styled.View`
   flex: 1;
@@ -10,8 +12,32 @@ export const Container = styled.View`
 
 export const WrapperMe = styled.View`
   padding-top: ${`${Window.heightScale(0.05)}px`};
+  justify-content: space-between;
+  margin-horizontal: ${`${Window.widthScale(0.05)}px`};
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const NotificationIcon = styled(Icon).attrs({
+  name: 'notifications',
+  size: 24,
+  color: theme.colors.primaryText,
+})``;
+
+export const WrapperMeFields = styled.View`
+  flex-direction: column;
+`;
+
+export const WrapperNotification = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.75,
+})`
+  padding: ${`${Window.widthScale(0.03)}px`};
   justify-content: center;
-  padding-horizontal: ${`${Window.widthScale(0.05)}px`};
+  align-items: center;
+  background-color: ${theme.colors.primaryColor};
+  align-self: center;
+  border-radius: ${`${Window.widthScale(0.035)}px`};
+  elevation: 15;
 `;
 
 export const TextMe = styled.Text`
@@ -50,8 +76,7 @@ export const TargetsFlatList = styled.FlatList.attrs({
   showsHorizontalScrollIndicator: false,
   keyboardShouldPersistTaps: 'handled',
   horizontal: true,
-  bounces: false,
-  alwaysBounceHorizontal: false,
+  overScrollMode: 'never',
 })``;
 
 export const Header = styled.View`
@@ -69,6 +94,7 @@ export const Footer = styled.View`
 export const TargetGoFlatList = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,
   keyboardShouldPersistTaps: 'handled',
+  overScrollMode: 'never',
 })`
   padding-top: ${`${Window.heightScale(0.02)}px`};
   height: 100%;

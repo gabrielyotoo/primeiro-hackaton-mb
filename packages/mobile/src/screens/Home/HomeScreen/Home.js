@@ -51,8 +51,13 @@ const mock = [
 const HomeTop = () => (
   <>
     <S.WrapperMe>
-      <S.TextMe>Daleeeee,</S.TextMe>
-      <S.TextMe bold>Lucas Araujo!</S.TextMe>
+      <S.WrapperMeFields>
+        <S.TextMe>Daleeeee,</S.TextMe>
+        <S.TextMe bold>Lucas Araujo!</S.TextMe>
+      </S.WrapperMeFields>
+      <S.WrapperNotification>
+        <S.NotificationIcon />
+      </S.WrapperNotification>
     </S.WrapperMe>
     <S.TargetContainer>
       <S.TargetText>Metas</S.TargetText>

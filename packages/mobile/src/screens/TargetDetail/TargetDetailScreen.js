@@ -50,6 +50,51 @@ const mock = [
   },
 ];
 
+const mockComments = [
+  {
+    id: 1,
+    comment: 'Usa o aaaaaaaaaa',
+    User: {
+      name: 'Lucas Araujo',
+    },
+  },
+  {
+    id: 2,
+    comment: 'Usa o aaaaaaaaaa',
+    User: {
+      name: 'Lucas Araujo',
+    },
+  },
+  {
+    id: 3,
+    comment: 'Usa o aaaaaaaaaa',
+    User: {
+      name: 'Lucas Araujo',
+    },
+  },
+  {
+    id: 4,
+    comment: 'Usa o aaaaaaaaaa',
+    User: {
+      name: 'Lucas Araujo',
+    },
+  },
+  {
+    id: 5,
+    comment: 'Usa o aaaaaaaaaa',
+    User: {
+      name: 'Lucas Araujo',
+    },
+  },
+  {
+    id: 6,
+    comment: 'Usa o aaaaaaaaaa',
+    User: {
+      name: 'Lucas Araujo',
+    },
+  },
+];
+
 const TargetTop = () => (
   <>
     <S.WrapperTarget>
@@ -66,6 +111,22 @@ const TargetTop = () => (
   </>
 );
 
+const TargetComments = () => (
+  <>
+    <S.Footer>
+      <S.Comments>Comentários:</S.Comments>
+      {mockComments.map((item) => (
+        <>
+          <S.WrapperComments key={item.id}>
+            <S.CommentsName bold>{item.User.name} comentou:</S.CommentsName>
+            <S.CommentsName>{item.comment}</S.CommentsName>
+          </S.WrapperComments>
+        </>
+      ))}
+    </S.Footer>
+  </>
+);
+
 const TargetDetailScreen = () => (
   <S.Screen>
     <StatusBar backgroundColor={colors.primaryColor} />
@@ -76,7 +137,7 @@ const TargetDetailScreen = () => (
       renderItem={({ item }) => (
         <TargetGo title={item.title} checked={item.checked} />
       )}
-      ListFooterComponent={() => <S.Footer />}
+      ListFooterComponent={() => <TargetComments />}
     />
   </S.Screen>
 );
