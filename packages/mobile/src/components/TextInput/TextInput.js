@@ -1,12 +1,11 @@
 import React from 'react';
-import { View } from 'react-native';
 import * as S from './TextInput.styles';
 
 const TextInput = ({
   width,
   label,
   value,
-  onChange,
+  onChangeText,
   placeholder,
   mode,
   disabled,
@@ -14,17 +13,19 @@ const TextInput = ({
   password,
   keyboardType,
 }) => {
-  return <S.InputText
-    width={width}
-    password={password}
-    label={label}
-    value={value}
-    onChangeText={onChange}
-    placeholder={placeholder}
-    mode={mode}
-    disabled={disabled}
-    keyboardType={keyboardType}
-  />;
+  return (
+    <S.Container width={width}>
+      <S.Label>{label}</S.Label>
+      <S.InputText
+        value={value}
+        onChangeText={onChangeText}
+        placeholder={placeholder}
+        disabled={disabled}
+        keyboardType={keyboardType}
+        secureTextEntry={password}
+      />
+    </S.Container>
+  );
 }
 
 export default TextInput;

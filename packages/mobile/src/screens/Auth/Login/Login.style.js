@@ -9,9 +9,10 @@ export const Container = styled.View`
   background-color: ${theme.colors.primaryColor};
 `;
 
-export const ImageLeft = styled.Image`
-  width: ${`${Window.widthScale(0.95)}px`};
+export const ImageLeft = styled.View`
   position: absolute;
+  width: ${`${Window.widthScale(0.95)}px`};
+  min-height: ${`${Window.heightScale(1)}px`};
 `;
 
 export const WrapperTitle = styled.View`
@@ -37,11 +38,14 @@ export const RowSubmit = styled.View`
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  
 `;
 
+export const WrapperRegister = styled.TouchableWithoutFeedback.attrs({
+  activeOpacity: 0.75,
+})``;
+
 export const SubmitText = styled.Text`
-  font-size: ${`${Window.fontScale(22)}px`};
+  font-size: ${`${Window.fontScale(14)}px`};
   font-family: ${theme.fonts.bold};
   color: ${theme.colors.primaryText};
 `;
@@ -54,7 +58,7 @@ export const CircleCheck = styled.TouchableOpacity.attrs({
   border-radius: ${`${Window.widthScale(0.1)}px`};
   justify-content: center;
   align-items: center;
-  elevation: 10;
+  elevation: 15;
   background-color: ${theme.colors.secoundColor};
 `;
 

@@ -1,25 +1,31 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
-
-import LeftImage from '../../../assets/png/left_auth.png';
+import EmailValidator from 'email-validator';
+import * as SnackBar from '../../../utils/snackBar';
+import LeftImage from '../../../assets/svg/left_auth.svg';
 import TextInput from '../../../components/TextInput/TextInput';
-// import { TextInput } from 'react-native-paper';
 import * as S from './Login.style';
 
-// import { Container } from './styles';
-
-const Login = () => {
+const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  console.log(email);
+  console.log(password);
 
   const handlerSubmit = () => {
-    console.log('submit')
+    const isValidEmail = EmailValidator.validate(email);
+    if (!isValidEmail) {
+      return SnackBar.message('E-mail inválido');
+    }
+    if (password.trim() === '' || password.length < 6) {
+      return SnackBar.message('Senha inválido');
+    }
   }
-
   return (
     <>
       <S.Container>
-        <S.ImageLeft source={LeftImage} />
+        <S.ImageLeft>
+          <LeftImage />
+        </S.ImageLeft>
         <S.WrapperTitle>
           <S.Title>Seja bem vindo!</S.Title>
         </S.WrapperTitle>
@@ -28,20 +34,23 @@ const Login = () => {
             label="E-mail"
             placeholder="Digite seu e-mail"
             width={0.75}
-            onChange={(value) => setEmail(value)}
+            onChangeText={(val) => setEmail(val)}
             value={email}
+            keyboardType="email-address"
           />
           <TextInput
             label="Senha"
             placeholder="Digite sua senha"
             width={0.75}
-            onChange={(value) => setPassword(value)}
+            onChangeText={(val) => setPassword(val)}
             value={password}
             password
           />
         </S.WrapperFields>
         <S.RowSubmit>
-          <S.SubmitText>Entrar</S.SubmitText>
+          <S.WrapperRegister onPress={() => navigation.navigate('register')}>
+            <S.SubmitText>Não possui conta? Faça agora!</S.SubmitText>
+          </S.WrapperRegister>
           <S.CircleCheck onPress={handlerSubmit}>
             <S.ArrowIcon />
           </S.CircleCheck>

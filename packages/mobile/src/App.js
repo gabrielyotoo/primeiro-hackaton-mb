@@ -12,9 +12,7 @@ export default class App extends Component {
   render() {
     return (
       // <StoreProvider>
-      <PaperProvider>
-        <AppContent />
-      </PaperProvider>
+      <AppContent />
       //* </StoreProvider> */}
     );
   }
