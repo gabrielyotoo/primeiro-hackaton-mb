@@ -69,6 +69,9 @@ const HomeScreen = () => {
               />
             </S.WrapperTarget>
           )}
+          ListEmptyComponent={() => (
+            <S.GoalEmpty>Nenhuma atividade cadastrada ainda</S.GoalEmpty>
+          )}
           ListFooterComponent={() => <S.VerticalFooter />}
         />
       </S.Container>
