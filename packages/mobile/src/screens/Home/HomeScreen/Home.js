@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import TargetGo from '../../../components/TargetGo/TargetGo';
 import TargetComponent from '../../../components/Target';
 import { getTargets } from '../../../redux/actions/targetActions';
-import { getGoals } from '../../../redux/actions/goalActions';
+import { getGoals, updateGoal } from '../../../redux/actions/goalActions';
 
 import * as S from './Home.style';
 
@@ -47,7 +47,11 @@ const HomeScreen = () => {
   useEffect(() => {
     dispatch(getTargets());
     dispatch(getGoals());
-  }, []);
+  }, [dispatch]);
+
+  const handlePress = (id) => {
+    dispatch(updateGoal(id));
+  };
 
   return (
     <>
@@ -58,7 +62,11 @@ const HomeScreen = () => {
           ListHeaderComponent={() => <HomeTop name={name} targets={targets} />}
           renderItem={({ item }) => (
             <S.WrapperTarget>
-              <TargetGo title={item.title} checked={item.checked} />
+              <TargetGo
+                title={item.title}
+                checked={item.done}
+                onPress={() => handlePress(item.id)}
+              />
             </S.WrapperTarget>
           )}
           ListFooterComponent={() => <S.VerticalFooter />}

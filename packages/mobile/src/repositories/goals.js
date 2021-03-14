@@ -16,6 +16,15 @@ const GoalApi = {
 
     return data;
   },
+
+  update: async (id) => {
+    const instance = getInstance();
+    const { data } = await instance.put(`${BASE_URL}/update/${id}`, {
+      done: true,
+    });
+
+    return data;
+  },
 };
 
 export default GoalApi;
