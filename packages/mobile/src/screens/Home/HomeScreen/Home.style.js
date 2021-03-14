@@ -7,10 +7,10 @@ import theme from '../../../theme/index.json';
 export const Container = styled.View`
   flex: 1;
   background-color: ${theme.colors.secoundColor};
+  padding-top: ${`${Window.heightScale(0.05)}px`};
 `;
 
 export const WrapperMe = styled.View`
-  padding-top: ${`${Window.heightScale(0.05)}px`};
   margin-horizontal: ${`${Window.widthScale(0.05)}px`};
   flex-direction: column;
 `;

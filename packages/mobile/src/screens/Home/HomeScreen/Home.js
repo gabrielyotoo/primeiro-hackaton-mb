@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { RefreshControl } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import TargetGo from '../../../components/TargetGo/TargetGo';
@@ -6,6 +7,7 @@ import TargetComponent from '../../../components/Target';
 import { getTargets } from '../../../redux/actions/targetActions';
 import { getGoals, updateGoal } from '../../../redux/actions/goalActions';
 import * as SnackBar from '../../../services/snackBar';
+import { colors } from '../../../theme/index.json';
 
 import * as S from './Home.style';
 
@@ -41,6 +43,7 @@ const HomeTop = ({ name, targets }) => (
 );
 
 const HomeScreen = () => {
+  const [refreshing, setRefreshing] = useState(false);
   const { goals } = useSelector((state) => state.goals);
   const { name } = useSelector((state) => state.session.loggedUser);
   const { targets } = useSelector((state) => state.targets);
@@ -50,6 +53,27 @@ const HomeScreen = () => {
     dispatch(getTargets());
     dispatch(getGoals());
   }, [dispatch]);
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    dispatch(
+      getTargets((err) => {
+        if (err) {
+          SnackBar.message(err);
+          setRefreshing(false);
+        } else {
+          dispatch(
+            getGoals((err) => {
+              if (err) {
+                SnackBar.message(err);
+              }
+              setRefreshing(false);
+            })
+          );
+        }
+      })
+    );
+  };
 
   const handlePress = (id, done) => {
     dispatch(
@@ -69,6 +93,13 @@ const HomeScreen = () => {
         <S.TargetGoFlatList
           data={goals}
           keyExtractor={({ id }) => id}
+          refreshControl={
+            <RefreshControl
+              colors={[colors.secoundColor]}
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+            />
+          }
           ListHeaderComponent={() => <HomeTop name={name} targets={targets} />}
           renderItem={({ item }) => (
             <S.WrapperTarget>
