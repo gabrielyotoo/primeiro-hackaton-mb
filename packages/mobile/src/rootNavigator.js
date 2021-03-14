@@ -82,8 +82,8 @@ const RootNavigator = () => (
     initialRouteName=""
     screenOptions={{ header: () => <></> }}
   >
-    <RootStack.Screen name="Content" component={ContentNavigator} />
     <RootStack.Screen name="Auth" component={AuthNavigator} />
+    <RootStack.Screen name="Content" component={ContentNavigator} />
   </RootStack.Navigator>
 );
 
