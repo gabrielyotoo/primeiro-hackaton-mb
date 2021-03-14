@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StatusBar } from 'react-native';
+import { Keyboard, StatusBar } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
@@ -36,6 +36,7 @@ const CreateTarget = () => {
   };
 
   const addToGoals = () => {
+    Keyboard.dismiss();
     const newGoal = {
       title: titleGoals,
       description: descriptionGoals,
@@ -59,7 +60,7 @@ const CreateTarget = () => {
         },
         (err) => {
           if (err) {
-            SnackBar.message(err ?? '');
+            SnackBar.message(err ?? 'Não foi possivel criar um target!');
           } else {
             navigation.reset({ index: 0, routes: [{ name: 'home' }] });
           }
@@ -93,6 +94,7 @@ const CreateTarget = () => {
                 setDueDate(formatNumbersToDate(onlyDigits(text)))
               }
               width={0.8}
+              keyboardType="number-pad"
             />
           </S.WrapperFields>
           <S.WrapperButton onPress={createTarget}>
@@ -122,6 +124,7 @@ const CreateTarget = () => {
                 setDueDateGoals(formatNumbersToDate(onlyDigits(text)))
               }
               width={0.8}
+              keyboardType="number-pad"
             />
           </S.WrapperFields>
           <S.WrapperButton onPress={addToGoals}>

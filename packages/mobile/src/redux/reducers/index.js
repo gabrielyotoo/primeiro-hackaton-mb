@@ -3,12 +3,14 @@ import { combineReducers } from 'redux';
 import session from './session';
 import targets from './targets';
 import goals from './goals';
+import loading from './loading';
 import week from './week';
 
 const appReducer = combineReducers({
   session,
   targets,
   goals,
+  loading,
   week,
 });
 

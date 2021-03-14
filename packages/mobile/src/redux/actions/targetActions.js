@@ -3,7 +3,7 @@ import TargetApi from '../../repositories/targets';
 import { decreaseLoading, increaseLoading } from './loadingAction';
 import { ADD_TARGET, SET_TARGETS, SET_TARGET_DETAILS } from './actionsTypes';
 
-export const getTargets = (callback = (err) => {}) => async (dispatch) => {
+export const getTargets = (callback = (err) => { }) => async (dispatch) => {
   dispatch(increaseLoading());
   try {
     const payload = await TargetApi.getAll();
@@ -20,7 +20,7 @@ export const getTargets = (callback = (err) => {}) => async (dispatch) => {
   }
 };
 
-export const addTarget = (target, callback = (err) => {}) => async (
+export const addTarget = (target, callback = (err) => { }) => async (
   dispatch
 ) => {
   dispatch(increaseLoading());
@@ -39,7 +39,7 @@ export const addTarget = (target, callback = (err) => {}) => async (
   }
 };
 
-export const getTargetDetails = (id, callback = (err) => {}) => async (
+export const getTargetDetails = (id, callback = (err) => { }) => async (
   dispatch
 ) => {
   dispatch(increaseLoading());

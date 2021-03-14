@@ -12,7 +12,7 @@ const TargetApi = {
 
   create: async (target) => {
     const instance = getInstance();
-    const { data } = await instance.post(`${BASE_URL}/create`, target);
+    const { data } = await instance.post(`${BASE_URL}`, target);
 
     return data;
   },
