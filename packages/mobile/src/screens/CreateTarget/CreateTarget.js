@@ -93,6 +93,7 @@ const CreateTarget = () => {
                 setDueDate(formatNumbersToDate(onlyDigits(text)))
               }
               width={0.8}
+              keyboardType="number-pad"
             />
           </S.WrapperFields>
           <S.WrapperButton onPress={createTarget}>
