@@ -12,7 +12,7 @@ const GoalApi = {
 
   getById: async (id) => {
     const instance = getInstance();
-    const { data } = await instance.get(`${BASE_URL}/${id}`);
+    const { data } = await instance.get(`${BASE_URL}/details/${id}`);
 
     return data;
   },
