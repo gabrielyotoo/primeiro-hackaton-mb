@@ -26,6 +26,7 @@ const HomeTop = ({ name, targets }) => (
             title={item.title}
             goals={item.goals}
             progress={item.progress}
+            id={item.id}
           />
         )}
         ListEmptyComponent={() => (

@@ -1,7 +1,7 @@
 import TargetApi from '../../repositories/targets';
 
 import { decreaseLoading, increaseLoading } from './loadingAction';
-import { ADD_TARGET, SET_TARGETS } from './actionsTypes';
+import { ADD_TARGET, SET_TARGETS, SET_TARGET_DETAILS } from './actionsTypes';
 
 export const getTargets = (callback = (err) => {}) => async (dispatch) => {
   dispatch(increaseLoading());
@@ -29,6 +29,28 @@ export const addTarget = (target, callback = (err) => {}) => async (
     dispatch({
       payload,
       type: ADD_TARGET,
+    });
+
+    callback(null);
+  } catch (err) {
+    callback(err);
+  } finally {
+    dispatch(decreaseLoading());
+  }
+};
+
+export const getTargetDetails = (id, callback = (err) => {}) => async (
+  dispatch
+) => {
+  dispatch(increaseLoading());
+  try {
+    const payload = await TargetApi.getById(id);
+    dispatch({
+      payload: {
+        ...payload,
+        goals: payload.Goals,
+      },
+      type: SET_TARGET_DETAILS,
     });
 
     callback(null);

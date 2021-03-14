@@ -9,7 +9,7 @@ import * as S from './TargetComponent.style';
 const TargetComponent = ({ title, goals, progress, id }) => {
   const navigation = useNavigation();
   const openTargetDetail = () => {
-    navigation.navigate('targetDetail');
+    navigation.navigate('targetDetail', { id });
   };
 
   return (

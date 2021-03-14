@@ -1,7 +1,18 @@
-import { ADD_TARGET, SET_TARGETS } from '../actions/actionsTypes';
+import {
+  ADD_TARGET,
+  SET_TARGETS,
+  SET_TARGET_DETAILS,
+} from '../actions/actionsTypes';
 
 export const initialState = {
   targets: [],
+  details: {
+    goals: [],
+    progress: 0,
+    id: null,
+    title: null,
+    description: null,
+  },
 };
 
 export const sessionReducer = (state = initialState, action) => {
@@ -16,6 +27,11 @@ export const sessionReducer = (state = initialState, action) => {
       return {
         ...state,
         targets: [...state.targets, payload],
+      };
+    case SET_TARGET_DETAILS:
+      return {
+        ...state,
+        details: payload,
       };
     default:
       return state;

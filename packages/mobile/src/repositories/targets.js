@@ -16,6 +16,13 @@ const TargetApi = {
 
     return data;
   },
+
+  getById: async (id) => {
+    const instance = getInstance();
+    const { data } = await instance.get(`${BASE_URL}/${id}`);
+
+    return data;
+  },
 };
 
 export default TargetApi;
