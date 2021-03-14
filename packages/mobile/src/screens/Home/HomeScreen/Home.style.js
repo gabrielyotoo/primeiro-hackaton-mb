@@ -1,9 +1,8 @@
 import styled from 'styled-components/native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import * as Window from '../../../utils/dimensions';
 import theme from '../../../theme/index.json';
-import Icon from 'react-native-vector-icons/Ionicons';
-
 
 export const Container = styled.View`
   flex: 1;

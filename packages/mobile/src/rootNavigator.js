@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Header from './components/Header';
 import TargeDetail from './screens/TargetDetail';
 import Home from './screens/Home';
+import CreateTarget from './screens/CreateTarget';
 
 // authstack
 import Login from './screens/Auth/Login';
@@ -34,6 +35,19 @@ const routes = [
         component={TargeDetail}
         options={{
           header: (props) => <Header {...props} title="meta" />,
+        }}
+      />
+    ),
+  },
+  {
+    name: 'createTarget',
+    component: (
+      <ContentStack.Screen
+        name="createTarget"
+        key="createTarget"
+        component={CreateTarget}
+        options={{
+          header: (props) => <Header {...props} title="Criar meta" />,
         }}
       />
     ),
@@ -82,8 +96,8 @@ const RootNavigator = () => (
     initialRouteName=""
     screenOptions={{ header: () => <></> }}
   >
-    <RootStack.Screen name="Auth" component={AuthNavigator} />
     <RootStack.Screen name="Content" component={ContentNavigator} />
+    <RootStack.Screen name="Auth" component={AuthNavigator} />
   </RootStack.Navigator>
 );
 
