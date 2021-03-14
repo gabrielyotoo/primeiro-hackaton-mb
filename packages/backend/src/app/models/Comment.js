@@ -11,6 +11,7 @@ class Comment extends Model {
           defaultValue: Sequelize.UUIDV4,
         },
         comment: Sequelize.STRING,
+        link: Sequelize.STRING,
         userId: Sequelize.UUIDV4,
         goalId: Sequelize.UUIDV4,
       },
