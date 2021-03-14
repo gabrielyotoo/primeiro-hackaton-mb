@@ -1,7 +1,7 @@
 import GoalApi from '../../repositories/goals';
 
 import { decreaseLoading, increaseLoading } from './loadingAction';
-import { SET_GOALS, TOGGLE_GOAL } from './actionsTypes';
+import { ADD_COMMENT, SET_GOALS, TOGGLE_GOAL } from './actionsTypes';
 
 export const getGoals = (callback = (err) => {}) => async (dispatch) => {
   dispatch(increaseLoading());
@@ -48,6 +48,25 @@ export const updateGoal = (goal, callback = (err) => {}) => async (
     dispatch({
       payload: goal,
       type: TOGGLE_GOAL,
+    });
+
+    callback(null);
+  } catch (err) {
+    callback(err);
+  } finally {
+    dispatch(decreaseLoading());
+  }
+};
+
+export const postComment = (comment, callback = (err) => {}) => async (
+  dispatch
+) => {
+  dispatch(increaseLoading());
+  try {
+    const payload = await GoalApi.comment(comment);
+    dispatch({
+      payload,
+      type: ADD_COMMENT,
     });
 
     callback(null);

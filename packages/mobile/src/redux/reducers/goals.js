@@ -3,6 +3,7 @@ import {
   SET_GOAL_DETAILS,
   TOGGLE_GOAL,
   SET_GOALS,
+  ADD_COMMENT,
 } from '../actions/actionsTypes';
 
 export const initialState = {
@@ -13,6 +14,7 @@ export const initialState = {
     text: null,
     done: false,
     dueDate: null,
+    comments: [],
   },
 };
 
@@ -53,6 +55,14 @@ export const goalReducer = (state = initialState, action) => {
       return {
         ...state,
         detail: payload,
+      };
+    case ADD_COMMENT:
+      return {
+        ...state,
+        detail: {
+          ...state.detail,
+          comments: [...state.detail.comments, payload],
+        },
       };
     default:
       return state;

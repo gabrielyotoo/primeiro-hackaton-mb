@@ -25,6 +25,13 @@ const GoalApi = {
 
     return data;
   },
+
+  comment: async (comment) => {
+    const instance = getInstance();
+    const { data } = await instance.post('/comment/create', comment);
+
+    return data;
+  },
 };
 
 export default GoalApi;
