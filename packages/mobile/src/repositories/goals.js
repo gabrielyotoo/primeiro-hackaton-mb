@@ -12,7 +12,7 @@ const GoalApi = {
 
   getById: async (id) => {
     const instance = getInstance();
-    const { data } = await instance.get(`${BASE_URL}/${id}`);
+    const { data } = await instance.get(`${BASE_URL}/details/${id}`);
 
     return data;
   },
@@ -22,6 +22,13 @@ const GoalApi = {
     const { data } = await instance.put(`${BASE_URL}/update/${id}`, {
       done,
     });
+
+    return data;
+  },
+
+  comment: async (comment) => {
+    const instance = getInstance();
+    const { data } = await instance.post('/comment/create', comment);
 
     return data;
   },

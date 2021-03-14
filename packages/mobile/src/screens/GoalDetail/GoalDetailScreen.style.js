@@ -21,7 +21,7 @@ export const Footer = styled.View`
 `;
 
 export const WrapperTarget = styled.View`
-  padding-vertical: ${`${Window.heightScale(0.05)}px`};
+  padding-vertical: ${`${Window.heightScale(0.025)}px`};
   flex-direction: column;
 `;
 
@@ -29,7 +29,6 @@ export const Title = styled.Text`
   color: ${colors.primaryText};
   font-size: ${fonts.sizes.title}px;
   font-family: ${fonts.bold};
-  margin-top: ${Window.heightScale(0.05)}px;
 `;
 
 export const Text = styled.Text`

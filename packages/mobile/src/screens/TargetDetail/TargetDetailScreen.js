@@ -23,9 +23,7 @@ const TargetTop = ({ title, description, progress }) => (
 
 const TargetDetailScreen = () => {
   const { params } = useRoute();
-  const { goals, progress, title, description } = useSelector(
-    (state) => state.targets
-  );
+  const { details } = useSelector((state) => state.targets);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,19 +34,19 @@ const TargetDetailScreen = () => {
         }
       })
     );
-  });
+  }, [dispatch, params.id]);
 
   return (
     <S.Screen>
       <StatusBar backgroundColor={colors.primaryColor} />
       <S.TargetGoFlatList
-        data={goals}
+        data={details.goals}
         keyExtractor={({ id }) => id}
         ListHeaderComponent={() => (
           <TargetTop
-            title={title}
-            description={description}
-            progress={progress}
+            title={details.title}
+            description={details.description}
+            progress={details.progress * 100}
           />
         )}
         renderItem={({ item }) => (
